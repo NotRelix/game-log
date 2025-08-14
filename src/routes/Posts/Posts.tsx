@@ -1,7 +1,20 @@
-const Posts = () => {
-  return (
-    <div>Posts</div>
-  )
-}
+import { useEffect, useState } from "react";
 
-export default Posts
+const Posts = () => {
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    const fetchPost = async () => {
+      const response = await fetch("http://localhost:3000/posts", {
+        mode: "cors",
+      });
+      const result = await response.json();
+      setPosts(result);
+    };
+
+    fetchPost();
+  }, []);
+  console.log(posts);
+  return <div>Posts</div>;
+};
+
+export default Posts;
