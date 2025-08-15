@@ -38,11 +38,58 @@
   color: var(--primary-text-dark);
 }
 
-.toggleTheme {
+.toggleTheme,
+.profileIcon {
   cursor: pointer;
 }
 
 .menuContainer {
+  position: relative;
   display: flex;
   align-items: center;
+  gap: 24px;
+}
+
+.profileContainer {
+  display: flex;
+}
+
+.menuDropDown {
+  display: none;
+  padding: 4px;
+  background-color: var(--primary-bg);
+  border: 1px solid var(--primary-border);
+  border-radius: 4px;
+}
+
+.dark .menuDropDown {
+  background-color: var(--primary-bg-dark);
+  border: 1px solid var(--primary-border-dark);
+}
+
+.menuDropDown span {
+  padding: 8px;
+  min-width: 100px;
+}
+
+.show {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 130%;
+  display: flex;
+  flex-direction: column;
+}
+
+.backdrop {
+  display: none;
+}
+
+.showBackdrop {
+  display: block;
+  top: 0;
+  right: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
 }
