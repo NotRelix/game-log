@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import styles from "./Root.module.css";
 import { useContext } from "react";
 import { DarkModeContext } from "../../context/DarkModeContext";
+import Footer from "../../components/Footer/Footer";
 
 const Root = () => {
   const context = useContext(DarkModeContext);
@@ -16,6 +17,7 @@ const Root = () => {
           <Outlet />
         </main>
       </div>
+      <Footer />
     </div>
   );
 };

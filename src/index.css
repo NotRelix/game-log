@@ -7,6 +7,7 @@
 
   /* text color */
   --primary-text: rgb(18, 18, 18);
+  --muted-text: rgb(129, 129, 129);
 
   /* border */
   --primary-border: rgb(230, 230, 230);
