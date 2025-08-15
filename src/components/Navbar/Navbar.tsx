@@ -2,6 +2,7 @@ import { useContext } from "react";
 import styles from "./Navbar.module.css";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import { Moon, Sun } from "lucide-react";
+import { Link } from "react-router";
 
 const Navbar = () => {
   const context = useContext(DarkModeContext);
@@ -11,7 +12,7 @@ const Navbar = () => {
   return (
     <nav className={`${styles.navbar} ${darkMode && styles.dark}`}>
       <div>
-        <h1>Game-Log</h1>
+        <Link className={styles.logo} to={"/"}>Game Log</Link>
       </div>
       <div className={styles.menuContainer}>
         {darkMode ? (
