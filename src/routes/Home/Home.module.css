@@ -23,6 +23,7 @@
   align-items: center;
   justify-content: center;
   gap: 24px;
+  padding: 16px;
 }
 
 .content h1 {
@@ -51,7 +52,6 @@
 }
 
 .dark .virtualWorld {
-  font-size: 54px;
   background: -webkit-linear-gradient(rgb(146, 190, 255), rgb(44, 96, 175));
   -webkit-background-clip: text;
   background-clip: text;
@@ -70,4 +70,18 @@
   background-color: var(--secondary-bg-dark);
   color: var(--secondary-text-dark);
   border: none;
+}
+
+@media (max-width: 768px) {
+  .content h1 {
+    font-size: 26px;
+  }
+
+  .supportingText {
+    font-size: 20px;
+  }
+
+  .virtualWorld {
+    font-size: 36px;
+  }
 }
