@@ -3,27 +3,34 @@ import Login from "./Login/Login";
 import Post from "./Post/Post";
 import Posts from "./Posts/Posts";
 import Register from "./Register/Register";
+import Root from "./Root/Root";
 
 const routes = [
   {
     path: "/",
-    Component: Home,
-  },
-  {
-    path: "/register",
-    Component: Register,
-  },
-  {
-    path: "/login",
-    Component: Login,
-  },
-  {
-    path: "/posts",
-    Component: Posts,
-  },
-  {
-    path: "/posts/:postId",
-    Component: Post,
+    Component: Root,
+    children: [
+      {
+        index: true,
+        Component: Home,
+      },
+      {
+        path: "register",
+        Component: Register,
+      },
+      {
+        path: "login",
+        Component: Login,
+      },
+      {
+        path: "posts",
+        Component: Posts,
+      },
+      {
+        path: "posts/:postId",
+        Component: Post,
+      },
+    ],
   },
 ];
 
