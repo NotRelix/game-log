@@ -27,6 +27,7 @@ const Login = () => {
       if (!result.success) {
         setErrors(result.messages);
       } else {
+        localStorage.setItem("token", result.token);
         setSuccess(result.messages);
       }
       console.log(result);
