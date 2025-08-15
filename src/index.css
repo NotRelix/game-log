@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 :root {
+  --primary-bg: rgb(235, 235, 235);
+  --primary-text: rgb(18, 18, 18);
+
   --primary-bg-dark: rgb(18, 18, 18);
   --primary-text-dark: rgb(235, 235, 235);
 }
@@ -10,4 +13,14 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+}
+
+.dark {
+  background-color: var(--primary-bg-dark);
+  color: var(--primary-text-dark);
 }

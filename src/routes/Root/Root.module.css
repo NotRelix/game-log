@@ -1,12 +1,9 @@
-.navbar {
+.container {
   background-color: var(--primary-bg);
   color: var(--primary-text);
-  position: sticky;
-  top: 0;
-  padding: 8px;
 }
 
 .dark {
   background-color: var(--primary-bg-dark);
-  color: var(--primary-text-dark);
+  color: var(--primary-text-dark)
 }

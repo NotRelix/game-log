@@ -25,6 +25,13 @@ export const DarkModeProvider = ({ children }: DarkMoveProviderProps) => {
 
   useEffect(() => {
     localStorage.setItem("darkMode", darkMode.toString());
+    if (darkMode) {
+      document.body.classList.add("dark");
+      document.body.classList.remove("light");
+    } else {
+      document.body.classList.add("light");
+      document.body.classList.remove("dark");
+    }
   }, [darkMode]);
 
   return (
