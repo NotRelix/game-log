@@ -7,3 +7,13 @@ export interface PostType {
   updatedAt: Date;
   authorId: number;
 }
+
+export interface CommentType {
+  id: number;
+  comment: string;
+  createdAt: Date;
+  updatedAt: Date;
+  postId: number;
+  authorId: number;
+  parentId: number;
+}
