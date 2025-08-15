@@ -1,9 +1,12 @@
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 const Register = () => {
+  const [errors, setErrors] = useState([]);
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
+      setErrors([]);
       const formData = new FormData(e.currentTarget);
       const data = {
         username: formData.get("username"),
@@ -15,7 +18,9 @@ const Register = () => {
         body: JSON.stringify(data),
       });
       const result = await response.json();
-      console.log(result);
+      if (!result.success) {
+        setErrors(result.messages);
+      }
     } catch (err) {
       console.log("Failed to register user.", err);
     }
@@ -23,6 +28,7 @@ const Register = () => {
   return (
     <div>
       <h1>Register</h1>
+      <ErrorMessage errors={errors} />
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input name="username" id="username" type="text" required />
