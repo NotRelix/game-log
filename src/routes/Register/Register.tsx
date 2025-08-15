@@ -37,8 +37,8 @@ const Register = () => {
   return (
     <div>
       <h1>Register</h1>
-      <ErrorMessage errors={errors} />
-      <SuccessMessage success={success} />
+      {errors.length > 0 && <ErrorMessage errors={errors} />}
+      {success.length > 0 && <SuccessMessage success={success} />}
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input name="username" id="username" type="text" required />
