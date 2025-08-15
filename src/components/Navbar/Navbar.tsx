@@ -6,10 +6,26 @@ import { Link } from "react-router";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
   const context = useContext(DarkModeContext);
   if (!context)
     throw new Error("Navbar must be used inside a DarkModeProvider");
   const { darkMode, toggleDarkMode } = context;
+
+  const handleMenuOpen = () => {
+    setIsMenuVisible(true);
+    requestAnimationFrame(() => {
+      setMenuOpen(true);
+    });
+  };
+
+  const handleMenuClose = () => {
+    setMenuOpen(false);
+    setTimeout(() => {
+      setIsMenuVisible(false);
+    }, 200);
+  };
+
   return (
     <nav className={`${styles.navbar} ${darkMode && styles.dark}`}>
       <div>
@@ -25,24 +41,28 @@ const Navbar = () => {
         )}
         <div className={styles.profileContainer}>
           <CircleUserRound
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={handleMenuOpen}
             className={styles.profileIcon}
           />
-          <div
-            className={`${styles.menuDropDown} ${menuOpen ? styles.show : ""} ${
-              darkMode ? styles.dark : ""
-            }`}
-          >
-            <span>User</span>
-            <span>User</span>
-            <span>User</span>
-          </div>
-          <div
-            onClick={() => setMenuOpen(false)}
-            className={`${styles.backdrop} ${
-              menuOpen ? styles.showBackdrop : ""
-            }`}
-          ></div>
+          {isMenuVisible && (
+            <>
+              <div
+                className={`${styles.menuDropDown} ${
+                  menuOpen ? styles.show : ""
+                } ${darkMode ? styles.dark : ""}`}
+              >
+                <span>User</span>
+                <span>User</span>
+                <span>User</span>
+              </div>
+              <div
+                onClick={handleMenuClose}
+                className={`${styles.backdrop} ${
+                  menuOpen ? styles.showBackdrop : ""
+                }`}
+              ></div>
+            </>
+          )}
         </div>
       </div>
     </nav>

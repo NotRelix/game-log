@@ -55,11 +55,20 @@
 }
 
 .menuDropDown {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+  transition: opacity 200ms ease, transform 200ms ease;
   padding: 4px;
   background-color: var(--primary-bg);
   border: 1px solid var(--primary-border);
   border-radius: 4px;
+  z-index: 100;
+  position: absolute;
+  right: 0;
+  top: 130%;
+  display: flex;
+  flex-direction: column;
 }
 
 .dark .menuDropDown {
@@ -68,17 +77,23 @@
 }
 
 .menuDropDown span {
+  cursor: pointer;
   padding: 8px;
   min-width: 100px;
 }
 
+.menuDropDown span:hover {
+  background-color: var(--primary-bg-hover);
+}
+
+.dark .menuDropDown span:hover {
+  background-color: var(--primary-bg-hover-dark);
+}
+
 .show {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 130%;
-  display: flex;
-  flex-direction: column;
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
 }
 
 .backdrop {
