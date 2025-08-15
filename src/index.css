@@ -1,11 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 :root {
+  /* ----- LIGHT MODE ----- */
+  /* background */
   --primary-bg: rgb(235, 235, 235);
+
+  /* text color */
   --primary-text: rgb(18, 18, 18);
 
+  /* border */
+  --primary-border: rgb(220, 220, 220);
+
+  /* ----- DARK MODE ----- */
+  /* background */
   --primary-bg-dark: rgb(18, 18, 18);
+
+  /* text color */
   --primary-text-dark: rgb(235, 235, 235);
+
+  /* border */
+  --primary-border-dark: rgb(33, 33, 33);
 }
 
 * {

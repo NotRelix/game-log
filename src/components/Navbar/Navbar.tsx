@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import styles from "./Navbar.module.css";
 import { DarkModeContext } from "../../context/DarkModeContext";
+import { Moon, Sun } from "lucide-react";
 
 const Navbar = () => {
   const context = useContext(DarkModeContext);
@@ -9,8 +10,16 @@ const Navbar = () => {
   const { darkMode, toggleDarkMode } = context;
   return (
     <nav className={`${styles.navbar} ${darkMode && styles.dark}`}>
-      <h1>Game-Log</h1>
-      <button onClick={toggleDarkMode}>Toggle Mode</button>
+      <div>
+        <h1>Game-Log</h1>
+      </div>
+      <div className={styles.menuContainer}>
+        {darkMode ? (
+          <Sun className={styles.toggleTheme} onClick={toggleDarkMode} />
+        ) : (
+          <Moon className={styles.toggleTheme} onClick={toggleDarkMode} />
+        )}
+      </div>
     </nav>
   );
 };

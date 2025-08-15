@@ -1,12 +1,29 @@
 .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: var(--primary-bg);
   color: var(--primary-text);
+  border-bottom: 1px solid var(--primary-border);
   position: sticky;
   top: 0;
-  padding: 8px;
+  padding: 8px 24px;
 }
 
 .dark {
   background-color: var(--primary-bg-dark);
   color: var(--primary-text-dark);
+}
+
+.navbar.dark {
+  border-color: var(--primary-border-dark);
+}
+
+.toggleTheme {
+  cursor: pointer;
+}
+
+.menuContainer {
+  display: flex;
+  align-items: center;
 }
