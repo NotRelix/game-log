@@ -7,3 +7,15 @@
   background-color: var(--primary-bg-dark);
   color: var(--primary-text-dark)
 }
+
+.screenContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

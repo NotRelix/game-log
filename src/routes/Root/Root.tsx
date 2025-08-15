@@ -10,10 +10,12 @@ const Root = () => {
   const { darkMode } = context;
   return (
     <div className={`${styles.container} ${darkMode && styles.dark}`}>
-      <Navbar />
-      <main className={styles.main}>
-        <Outlet />
-      </main>
+      <div className={styles.screenContainer}>
+        <Navbar />
+        <main className={styles.main}>
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,19 @@
-const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+import { useContext } from "react";
+import styles from "./Home.module.css";
+import { DarkModeContext } from "../../context/DarkModeContext";
 
-export default Home
+const Home = () => {
+  const context = useContext(DarkModeContext);
+  if (!context) throw new Error("Home must be used inside a DarkModeProvider");
+  const { darkMode } = context;
+  return (
+    <div className={`${styles.container} ${darkMode && styles.dark}`}>
+      <div className={styles.content}>
+        <h1>Hear Stories <span className={styles.supportingText}>from the</span> <br /> <span className={styles.virtualWorld}>Virtual World</span></h1>
+        <button className={styles.startReading}>Start Reading</button>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
