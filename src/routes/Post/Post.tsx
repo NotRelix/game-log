@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import type { PostType } from "../../types";
 
 const Post = () => {
   const { postId } = useParams<{ postId: string }>();
-  const [post, setPost] = useState({});
+  const [post, setPost] = useState<PostType | null>(null);
   useEffect(() => {
     const fetchPost = async () => {
-      const response = await fetch(`http://localhost:3000/posts/${postId}`);
-      const result = await response.json();
-      setPost(result.post);
-      console.log(result);
+      try {
+        const response = await fetch(`http://localhost:3000/posts/${postId}`);
+        const result: { post: PostType } = await response.json();
+        setPost(result.post);
+        console.log(result);
+      } catch (err) {
+        console.error(err);
+      }
     };
 
     fetchPost();
