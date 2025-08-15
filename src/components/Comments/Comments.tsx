@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent, type JSX } from "react";
 import type { CommentType } from "../../types";
+import styles from "./Comments.module.css";
 
 type CommentsProps = {
   postId: number;
@@ -7,6 +8,7 @@ type CommentsProps = {
 
 const Comments = ({ postId }: CommentsProps): JSX.Element => {
   const [comments, setComments] = useState<CommentType[] | null>(null);
+  const [commentInput, setCommentInput] = useState<string>("");
   useEffect(() => {
     const fetchComments = async () => {
       const response = await fetch(
@@ -22,9 +24,8 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
 
   const handlePostComment = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
     const data = {
-      comment: formData.get("comment") || "",
+      comment: commentInput,
     };
     const token = localStorage.getItem("token") || "";
     console.log(token);
@@ -43,6 +44,7 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
     setComments((prev) =>
       prev ? [result.comment, ...prev] : [result.comment]
     );
+    setCommentInput("");
     console.log(result);
   };
 
@@ -55,14 +57,22 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
       <h1>Comments Section:</h1>
       <form onSubmit={handlePostComment}>
         <label htmlFor="comment">Comment</label>
-        <input type="text" id="comment" name="comment" />
+        <input
+          type="text"
+          id="comment"
+          name="comment"
+          value={commentInput}
+          onChange={(e) => setCommentInput(e.target.value)}
+        />
         <button type="submit">Post</button>
       </form>
-      {comments.map((comment) => (
-        <span key={comment.id}>
-          {comment.comment} {new Date(comment.createdAt).toLocaleString()}
-        </span>
-      ))}
+      <div className={styles.commentsContainer}>
+        {comments.map((comment) => (
+          <span key={comment.id}>
+            {comment.comment} {new Date(comment.createdAt).toLocaleString()}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };
