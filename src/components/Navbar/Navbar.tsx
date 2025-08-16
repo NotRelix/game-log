@@ -51,9 +51,20 @@ const Navbar = () => {
                   menuOpen ? styles.show : ""
                 } ${darkMode ? styles.dark : ""}`}
               >
-                <span>User</span>
-                <span>User</span>
-                <span>User</span>
+                <Link
+                  to={"/login"}
+                  onClick={handleMenuClose}
+                  className={styles.menuLink}
+                >
+                  Login
+                </Link>
+                <Link
+                  to={"/register"}
+                  onClick={handleMenuClose}
+                  className={styles.menuLink}
+                >
+                  Register
+                </Link>
               </div>
               <div
                 onClick={handleMenuClose}

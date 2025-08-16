@@ -76,17 +76,23 @@
   border: 1px solid var(--primary-border-dark);
 }
 
-.menuDropDown span {
+.menuLink {
   cursor: pointer;
   padding: 8px;
   min-width: 100px;
+  color: var(--primary-text);
+  text-decoration: none;
 }
 
-.menuDropDown span:hover {
+.dark .menuLink {
+  color: var(--primary-text-dark);
+}
+
+.menuLink:hover {
   background-color: var(--primary-bg-hover);
 }
 
-.dark .menuDropDown span:hover {
+.dark .menuLink:hover {
   background-color: var(--primary-bg-hover-dark);
 }
 
