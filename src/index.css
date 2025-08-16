@@ -7,10 +7,12 @@
 
   /* text color */
   --primary-text: rgb(18, 18, 18);
+  --secondary-text: rgb(61, 61, 61);
   --muted-text: rgb(129, 129, 129);
 
   /* border */
   --primary-border: rgb(230, 230, 230);
+  --muted-border: rgb(211, 211, 211);
 
   /* hover */
   --primary-bg-hover: rgb(245, 245, 245);
