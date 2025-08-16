@@ -80,7 +80,7 @@
 .menuLink {
   cursor: pointer;
   padding: 8px;
-  min-width: 100px;
+  min-width: max-content;
   color: var(--primary-text);
   text-decoration: none;
 }

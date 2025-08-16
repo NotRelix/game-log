@@ -44,7 +44,6 @@ const Navbar = () => {
     throw new Error("Navbar must be used inside a DarkModeProvider");
   const { darkMode, toggleDarkMode } = context;
   const { isAuthenticated, user } = useAuth();
-  console.log(isAuthenticated, user);
 
   const handleMenuOpen = () => {
     setIsMenuVisible(true);
@@ -85,20 +84,27 @@ const Navbar = () => {
                   menuOpen ? styles.show : ""
                 } ${darkMode ? styles.dark : ""}`}
               >
-                <Link
-                  to={"/login"}
-                  onClick={handleMenuClose}
-                  className={styles.menuLink}
-                >
-                  Login
-                </Link>
-                <Link
-                  to={"/register"}
-                  onClick={handleMenuClose}
-                  className={styles.menuLink}
-                >
-                  Register
-                </Link>
+                {isAuthenticated
+                  ? loggedInMenuLinks.map((menu) => (
+                      <Link
+                        key={menu.id}
+                        to={menu.redirect}
+                        onClick={handleMenuClose}
+                        className={styles.menuLink}
+                      >
+                        {menu.name}
+                      </Link>
+                    ))
+                  : guestMenuLinks.map((menu) => (
+                      <Link
+                        key={menu.id}
+                        to={menu.redirect}
+                        onClick={handleMenuClose}
+                        className={styles.menuLink}
+                      >
+                        {menu.name}
+                      </Link>
+                    ))}
               </div>
               <div
                 onClick={handleMenuClose}
