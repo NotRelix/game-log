@@ -87,6 +87,20 @@ const Register = () => {
             }}
             required
           />
+          <label className={styles.label} htmlFor="confirmPassword">
+            Confirm Password
+          </label>
+          <input
+            className={styles.input}
+            name="confirmPassword"
+            id="confirmPassword"
+            type="password"
+            placeholder="Enter Password Again"
+            value={data.confirmPassword}
+            onChange={(e) => {
+              setData((prev) => ({ ...prev, confirmPassword: e.target.value }));
+            }}
+          />
           <button className={styles.submitButton} type="submit">
             Register
           </button>
