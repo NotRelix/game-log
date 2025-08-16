@@ -1,11 +1,10 @@
 import { useContext, useState, type FormEvent } from "react";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import SuccessMessage from "../../components/SuccessMessage/SuccessMessage";
 import registerStyles from "../Register/Register.module.css";
 import { Link } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import type { LoginType } from "../../types";
+import { MessageContext } from "../../context/MessageContext";
 
 const emptyLogin: LoginType = {
   username: "",
@@ -13,8 +12,7 @@ const emptyLogin: LoginType = {
 };
 
 const Login = () => {
-  const [errors, setErrors] = useState<string[]>([]);
-  const [success, setSuccess] = useState<string[]>([]);
+  const { setErrors, setSuccess } = useContext(MessageContext)!;
   const [data, setData] = useState<LoginType>(emptyLogin);
   const context = useContext(DarkModeContext);
   if (!context)
@@ -56,8 +54,6 @@ const Login = () => {
     >
       <div className={registerStyles.loginContainer}>
         <h1 className={registerStyles.header}>Login</h1>
-        {errors.length > 0 && <ErrorMessage errors={errors} />}
-        {success.length > 0 && <SuccessMessage success={success} />}
         <p>
           Already have an account?{" "}
           <Link className={registerStyles.redirect} to={"/register"}>

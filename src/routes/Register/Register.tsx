@@ -1,10 +1,9 @@
 import { useContext, useState, type FormEvent } from "react";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import SuccessMessage from "../../components/SuccessMessage/SuccessMessage";
 import styles from "./Register.module.css";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import { Link } from "react-router";
 import type { RegisterType } from "../../types";
+import { MessageContext } from "../../context/MessageContext";
 
 const emptyRegister: RegisterType = {
   username: "",
@@ -13,8 +12,7 @@ const emptyRegister: RegisterType = {
 };
 
 const Register = () => {
-  const [errors, setErrors] = useState<string[]>([]);
-  const [success, setSuccess] = useState<string[]>([]);
+  const { setErrors, setSuccess } = useContext(MessageContext)!;
   const [data, setData] = useState<RegisterType>(emptyRegister);
   const context = useContext(DarkModeContext);
   if (!context)
@@ -49,8 +47,6 @@ const Register = () => {
     <div className={`${styles.container} ${darkMode ? styles.dark : ""}`}>
       <div className={styles.registerContainer}>
         <h1 className={styles.header}>Register</h1>
-        {errors.length > 0 && <ErrorMessage errors={errors} />}
-        {success.length > 0 && <SuccessMessage success={success} />}
         <p>
           Don't have an account yet?{" "}
           <Link className={styles.redirect} to={"/login"}>
