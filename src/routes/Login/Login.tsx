@@ -4,10 +4,17 @@ import SuccessMessage from "../../components/SuccessMessage/SuccessMessage";
 import registerStyles from "../Register/Register.module.css";
 import { Link } from "react-router";
 import { DarkModeContext } from "../../context/DarkModeContext";
+import type { LoginType } from "../../types";
+
+const emptyLogin: LoginType = {
+  username: "",
+  password: "",
+};
 
 const Login = () => {
   const [errors, setErrors] = useState<string[]>([]);
   const [success, setSuccess] = useState<string[]>([]);
+  const [data, setData] = useState<LoginType>(emptyLogin);
   const context = useContext(DarkModeContext);
   if (!context)
     throw new Error("Register must be used inside a DarkModeProvider");
@@ -18,12 +25,6 @@ const Login = () => {
     setSuccess([]);
 
     try {
-      const formData = new FormData(e.currentTarget);
-      const data = {
-        username: formData.get("username") || "",
-        password: formData.get("password") || "",
-      };
-
       const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -70,6 +71,10 @@ const Login = () => {
             id="username"
             type="text"
             placeholder="loadingbob1329"
+            value={data.username}
+            onChange={(e) => {
+              setData((prev) => ({ ...prev, username: e.target.value }));
+            }}
             required
           />
           <label className={registerStyles.label} htmlFor="password">
@@ -81,6 +86,10 @@ const Login = () => {
             id="password"
             type="password"
             placeholder="Enter password"
+            value={data.password}
+            onChange={(e) => {
+              setData((prev) => ({ ...prev, password: e.target.value }));
+            }}
             required
           />
           <button className={registerStyles.submitButton} type="submit">
