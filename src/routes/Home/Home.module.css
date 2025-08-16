@@ -63,7 +63,10 @@
   background-color: var(--primary-bg);
   cursor: pointer;
   padding: 12px 36px;
+  border: 1px solid var(--primary-border);
   border-radius: 8px;
+  text-decoration: none;
+  color: var(--primary-text);
 }
 
 .dark .startReading {

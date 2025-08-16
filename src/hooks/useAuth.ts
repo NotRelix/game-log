@@ -1,11 +1,5 @@
 import { useEffect, useState } from "react";
-
-interface AuthType {
-  id: number;
-  username: string;
-  role: number;
-  exp: number;
-}
+import type { AuthType } from "../types";
 
 export const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);

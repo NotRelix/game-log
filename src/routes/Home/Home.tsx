@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import styles from "./Home.module.css";
 import { DarkModeContext } from "../../context/DarkModeContext";
+import { Link } from "react-router";
 
 const Home = () => {
   const context = useContext(DarkModeContext);
@@ -10,7 +11,7 @@ const Home = () => {
     <div className={`${styles.container} ${darkMode ? styles.dark : ""}`}>
       <div className={styles.content}>
         <h1>Hear Stories <span className={styles.supportingText}>from the</span> <br /> <span className={styles.virtualWorld}>Virtual World</span></h1>
-        <button className={styles.startReading}>Start Reading</button>
+        <Link to={"/posts"} className={styles.startReading}>Start Reading</Link>
       </div>
     </div>
   );

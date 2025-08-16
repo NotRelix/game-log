@@ -1,3 +1,4 @@
+// Frontend Types
 export interface LoginType {
   username: string;
   password: string;
@@ -9,6 +10,14 @@ export interface RegisterType {
   confirmPassword: string;
 }
 
+export interface AuthType {
+  id: number;
+  username: string;
+  role: number;
+  exp: number;
+}
+
+// Schema Types
 export interface PostType {
   id: number;
   title: string;

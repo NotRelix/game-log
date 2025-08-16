@@ -26,7 +26,7 @@ const loggedInMenuLinks = [
   },
   {
     id: 2,
-    name: "Author Website",
+    name: "Dashboard",
     redirect: "/",
   },
 ];
