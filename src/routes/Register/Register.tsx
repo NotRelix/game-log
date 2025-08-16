@@ -1,10 +1,16 @@
-import { useState, type FormEvent } from "react";
+import { useContext, useState, type FormEvent } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import SuccessMessage from "../../components/SuccessMessage/SuccessMessage";
+import styles from "./Register.module.css";
+import { DarkModeContext } from "../../context/DarkModeContext";
 
 const Register = () => {
   const [errors, setErrors] = useState<string[]>([]);
   const [success, setSuccess] = useState<string[]>([]);
+  const context = useContext(DarkModeContext);
+  if (!context)
+    throw new Error("Register must be used inside a DarkModeProvider");
+  const { darkMode } = context;
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrors([]);
@@ -35,17 +41,39 @@ const Register = () => {
     }
   };
   return (
-    <div>
-      <h1>Register</h1>
-      {errors.length > 0 && <ErrorMessage errors={errors} />}
-      {success.length > 0 && <SuccessMessage success={success} />}
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input name="username" id="username" type="text" required />
-        <label htmlFor="password">Password</label>
-        <input name="password" id="password" type="password" required />
-        <button type="submit">Register</button>
-      </form>
+    <div className={`${styles.container} ${darkMode ? styles.dark : ""}`}>
+      <div className={styles.registerContainer}>
+        <h1 className={styles.header}>Register</h1>
+        {errors.length > 0 && <ErrorMessage errors={errors} />}
+        {success.length > 0 && <SuccessMessage success={success} />}
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <label className={styles.label} htmlFor="username">
+            Username
+          </label>
+          <input
+            className={styles.input}
+            name="username"
+            id="username"
+            type="text"
+            placeholder="loadingbob1329"
+            required
+          />
+          <label className={styles.label} htmlFor="password">
+            Password
+          </label>
+          <input
+            className={styles.input}
+            name="password"
+            id="password"
+            type="password"
+            placeholder="Enter password"
+            required
+          />
+          <button className={styles.submitButton} type="submit">
+            Register
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
