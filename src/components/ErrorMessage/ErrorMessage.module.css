@@ -1,0 +1,7 @@
+.errorLight {
+  background: var(--primary-bg) !important;
+}
+
+.errorDark {
+  background: var(--secondary-bg-dark) !important;
+}

@@ -21,9 +21,6 @@ const Register = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setErrors([]);
-    setSuccess([]);
-
     try {
       const response = await fetch("http://localhost:3000/register", {
         method: "POST",

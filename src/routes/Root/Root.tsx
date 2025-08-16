@@ -7,6 +7,7 @@ import Footer from "../../components/Footer/Footer";
 import { MessageContext } from "../../context/MessageContext";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import SuccessMessage from "../../components/SuccessMessage/SuccessMessage";
+import { Bounce, ToastContainer } from "react-toastify";
 
 const Root = () => {
   const { errors, success } = useContext(MessageContext)!;
@@ -18,8 +19,23 @@ const Root = () => {
       <div className={styles.screenContainer}>
         <Navbar />
         <main className={styles.main}>
+          <ToastContainer
+            toastClassName={() =>
+              darkMode ? styles.errorDark : styles.errorLight
+            }
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            transition={Bounce}
+          />
           <ErrorMessage errors={errors} darkMode={darkMode} />
-          {success.length > 0 && <SuccessMessage success={success} />}
+          <SuccessMessage success={success} darkMode={darkMode} />
           <Outlet />
         </main>
       </div>

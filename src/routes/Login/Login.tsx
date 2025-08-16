@@ -22,9 +22,6 @@ const Login = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setErrors([]);
-    setSuccess([]);
-
     try {
       const response = await fetch("http://localhost:3000/login", {
         method: "POST",
