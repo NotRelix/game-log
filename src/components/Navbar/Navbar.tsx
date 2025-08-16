@@ -3,6 +3,38 @@ import styles from "./Navbar.module.css";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import { CircleUserRound, Moon, Sun } from "lucide-react";
 import { Link } from "react-router";
+import { useAuth } from "../../hooks/useAuth";
+
+const guestMenuLinks = [
+  {
+    id: 1,
+    name: "Login",
+    redirect: "/login",
+  },
+  {
+    id: 2,
+    name: "Register",
+    redirect: "/register",
+  },
+];
+
+const loggedInMenuLinks = [
+  {
+    id: 1,
+    name: "Posts",
+    redirect: "/posts",
+  },
+  {
+    id: 2,
+    name: "Author Website",
+    redirect: "/",
+  },
+  {
+    id: 3,
+    name: "Logout",
+    redirect: "/",
+  },
+];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -11,6 +43,8 @@ const Navbar = () => {
   if (!context)
     throw new Error("Navbar must be used inside a DarkModeProvider");
   const { darkMode, toggleDarkMode } = context;
+  const { isAuthenticated, user } = useAuth();
+  console.log(isAuthenticated, user);
 
   const handleMenuOpen = () => {
     setIsMenuVisible(true);
