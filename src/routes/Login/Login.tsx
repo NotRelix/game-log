@@ -3,6 +3,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import SuccessMessage from "../../components/SuccessMessage/SuccessMessage";
 import registerStyles from "../Register/Register.module.css";
 import { Link } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import type { LoginType } from "../../types";
 
@@ -19,6 +20,8 @@ const Login = () => {
   if (!context)
     throw new Error("Register must be used inside a DarkModeProvider");
   const { darkMode } = context;
+  const navigate = useNavigate();
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrors([]);
@@ -37,6 +40,7 @@ const Login = () => {
       } else {
         localStorage.setItem("token", result.token);
         setSuccess(result.messages);
+        navigate("/posts");
       }
     } catch (err) {
       setErrors(["Failed to login user"]);

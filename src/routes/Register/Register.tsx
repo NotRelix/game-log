@@ -20,6 +20,7 @@ const Register = () => {
   if (!context)
     throw new Error("Register must be used inside a DarkModeProvider");
   const { darkMode } = context;
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrors([]);

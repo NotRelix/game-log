@@ -1,3 +1,4 @@
+import { AuthLoader } from "../loaders/AuthLoader";
 import Home from "./Home/Home";
 import Login from "./Login/Login";
 import Post from "./Post/Post";
@@ -17,10 +18,12 @@ const routes = [
       {
         path: "register",
         Component: Register,
+        loader: AuthLoader,
       },
       {
         path: "login",
         Component: Login,
+        loader: AuthLoader,
       },
       {
         path: "posts",
