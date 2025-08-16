@@ -3,9 +3,10 @@ import { Bounce, toast, ToastContainer } from "react-toastify";
 
 interface ErrorMessageType {
   errors: string[];
+  darkMode: boolean;
 }
 
-const ErrorMessage = ({ errors }: ErrorMessageType): JSX.Element => {
+const ErrorMessage = ({ errors, darkMode }: ErrorMessageType): JSX.Element => {
   useEffect(() => {
     errors.map((error, index) => {
       setTimeout(() => {
@@ -17,15 +18,15 @@ const ErrorMessage = ({ errors }: ErrorMessageType): JSX.Element => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "light",
           transition: Bounce,
         });
       }, index * 50);
     });
-  }, [errors]);
+  }, [errors, darkMode]);
 
   return (
     <ToastContainer
+      key={darkMode ? "dark" : "light"}
       position="bottom-right"
       autoClose={5000}
       hideProgressBar={false}
@@ -35,7 +36,7 @@ const ErrorMessage = ({ errors }: ErrorMessageType): JSX.Element => {
       pauseOnFocusLoss
       draggable
       pauseOnHover
-      theme="light"
+      theme={darkMode ? "dark": "light"}
       transition={Bounce}
     />
   );
