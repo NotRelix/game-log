@@ -3,6 +3,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import SuccessMessage from "../../components/SuccessMessage/SuccessMessage";
 import styles from "./Register.module.css";
 import { DarkModeContext } from "../../context/DarkModeContext";
+import { Link } from "react-router";
 
 const Register = () => {
   const [errors, setErrors] = useState<string[]>([]);
@@ -46,6 +47,9 @@ const Register = () => {
         <h1 className={styles.header}>Register</h1>
         {errors.length > 0 && <ErrorMessage errors={errors} />}
         {success.length > 0 && <SuccessMessage success={success} />}
+        <p>
+          Don't have an account yet? <Link className={styles.redirect} to={"/login"}>Login</Link>
+        </p>
         <form onSubmit={handleSubmit} className={styles.form}>
           <label className={styles.label} htmlFor="username">
             Username

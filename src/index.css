@@ -9,6 +9,7 @@
   --primary-text: rgb(18, 18, 18);
   --secondary-text: rgb(61, 61, 61);
   --muted-text: rgb(129, 129, 129);
+  --primary-link: rgb(71, 114, 233);
 
   /* border */
   --primary-border: rgb(230, 230, 230);
@@ -25,6 +26,7 @@
   /* text color */
   --primary-text-dark: rgb(235, 235, 235);
   --muted-text-dark: rgb(179, 179, 179);
+  --primary-link-dark: rgb(103, 143, 255);
 
   /* border */
   --primary-border-dark: rgb(33, 33, 33);
