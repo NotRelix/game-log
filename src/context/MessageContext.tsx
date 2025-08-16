@@ -5,7 +5,7 @@ interface MessageContextType {
   success: string[];
   setErrors: (msg: string[]) => void;
   setSuccess: (msg: string[]) => void;
-  clearMessages: () => void;
+  clearErrors: () => void;
 }
 
 export const MessageContext = createContext<MessageContextType | null>(null);
@@ -18,9 +18,8 @@ export const MessageProvider = ({ children }: MessageProviderProps) => {
   const [errors, setErrors] = useState<string[]>([]);
   const [success, setSuccess] = useState<string[]>([]);
 
-  const clearMessages = () => {
+  const clearErrors = () => {
     setErrors([]);
-    setSuccess([]);
   };
 
   return (
@@ -30,7 +29,7 @@ export const MessageProvider = ({ children }: MessageProviderProps) => {
         success,
         setErrors,
         setSuccess,
-        clearMessages,
+        clearErrors,
       }}
     >
       {children}

@@ -18,7 +18,7 @@ const Root = () => {
       <div className={styles.screenContainer}>
         <Navbar />
         <main className={styles.main}>
-          {errors.length > 0 && <ErrorMessage errors={errors} />}
+          <ErrorMessage errors={errors} />
           {success.length > 0 && <SuccessMessage success={success} />}
           <Outlet />
         </main>
