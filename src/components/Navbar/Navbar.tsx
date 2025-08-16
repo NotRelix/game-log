@@ -29,11 +29,6 @@ const loggedInMenuLinks = [
     name: "Author Website",
     redirect: "/",
   },
-  {
-    id: 3,
-    name: "Logout",
-    redirect: "/",
-  },
 ];
 
 const Navbar = () => {
@@ -43,7 +38,7 @@ const Navbar = () => {
   if (!context)
     throw new Error("Navbar must be used inside a DarkModeProvider");
   const { darkMode, toggleDarkMode } = context;
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user, logout } = useAuth();
 
   const handleMenuOpen = () => {
     setIsMenuVisible(true);
@@ -56,6 +51,13 @@ const Navbar = () => {
     setMenuOpen(false);
     setTimeout(() => {
       setIsMenuVisible(false);
+    }, 200);
+  };
+
+  const handleLogout = () => {
+    handleMenuClose();
+    setTimeout(() => {
+      logout();
     }, 200);
   };
 
@@ -84,18 +86,9 @@ const Navbar = () => {
                   menuOpen ? styles.show : ""
                 } ${darkMode ? styles.dark : ""}`}
               >
-                {isAuthenticated
-                  ? loggedInMenuLinks.map((menu) => (
-                      <Link
-                        key={menu.id}
-                        to={menu.redirect}
-                        onClick={handleMenuClose}
-                        className={styles.menuLink}
-                      >
-                        {menu.name}
-                      </Link>
-                    ))
-                  : guestMenuLinks.map((menu) => (
+                {isAuthenticated ? (
+                  <>
+                    {loggedInMenuLinks.map((menu) => (
                       <Link
                         key={menu.id}
                         to={menu.redirect}
@@ -105,6 +98,26 @@ const Navbar = () => {
                         {menu.name}
                       </Link>
                     ))}
+                    <Link
+                      to="/"
+                      onClick={handleLogout}
+                      className={styles.menuLink}
+                    >
+                      Logout
+                    </Link>
+                  </>
+                ) : (
+                  guestMenuLinks.map((menu) => (
+                    <Link
+                      key={menu.id}
+                      to={menu.redirect}
+                      onClick={handleMenuClose}
+                      className={styles.menuLink}
+                    >
+                      {menu.name}
+                    </Link>
+                  ))
+                )}
               </div>
               <div
                 onClick={handleMenuClose}

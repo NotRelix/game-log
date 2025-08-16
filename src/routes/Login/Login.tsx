@@ -38,7 +38,6 @@ const Login = () => {
         localStorage.setItem("token", result.token);
         setSuccess(result.messages);
       }
-      console.log(result);
     } catch (err) {
       setErrors(["Failed to login user"]);
       console.error(err);
