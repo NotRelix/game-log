@@ -1,3 +1,9 @@
+export interface RegisterType {
+  username: string,
+  password: string,
+  confirmPassword: string,
+}
+
 export interface PostType {
   id: number;
   title: string;

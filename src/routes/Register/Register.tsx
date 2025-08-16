@@ -4,10 +4,18 @@ import SuccessMessage from "../../components/SuccessMessage/SuccessMessage";
 import styles from "./Register.module.css";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import { Link } from "react-router";
+import type { RegisterType } from "../../types";
+
+const emptyRegister: RegisterType = {
+  username: "",
+  password: "",
+  confirmPassword: "",
+};
 
 const Register = () => {
   const [errors, setErrors] = useState<string[]>([]);
   const [success, setSuccess] = useState<string[]>([]);
+  const [data, setData] = useState<RegisterType>(emptyRegister);
   const context = useContext(DarkModeContext);
   if (!context)
     throw new Error("Register must be used inside a DarkModeProvider");
@@ -18,12 +26,6 @@ const Register = () => {
     setSuccess([]);
 
     try {
-      const formData = new FormData(e.currentTarget);
-      const data = {
-        username: formData.get("username") || "",
-        password: formData.get("password") || "",
-      };
-
       const response = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -35,6 +37,7 @@ const Register = () => {
         setErrors(result.messages);
       } else {
         setSuccess(result.messages);
+        setData(emptyRegister);
       }
     } catch (err) {
       setErrors(["Failed to register user"]);
@@ -48,7 +51,10 @@ const Register = () => {
         {errors.length > 0 && <ErrorMessage errors={errors} />}
         {success.length > 0 && <SuccessMessage success={success} />}
         <p>
-          Don't have an account yet? <Link className={styles.redirect} to={"/login"}>Login</Link>
+          Don't have an account yet?{" "}
+          <Link className={styles.redirect} to={"/login"}>
+            Login
+          </Link>
         </p>
         <form onSubmit={handleSubmit} className={styles.form}>
           <label className={styles.label} htmlFor="username">
@@ -60,6 +66,10 @@ const Register = () => {
             id="username"
             type="text"
             placeholder="loadingbob1329"
+            value={data.username || ""}
+            onChange={(e) =>
+              setData((prev) => ({ ...prev, username: e.target.value }))
+            }
             required
           />
           <label className={styles.label} htmlFor="password">
@@ -71,6 +81,10 @@ const Register = () => {
             id="password"
             type="password"
             placeholder="Enter password"
+            value={data.password}
+            onChange={(e) => {
+              setData((prev) => ({ ...prev, password: e.target.value }));
+            }}
             required
           />
           <button className={styles.submitButton} type="submit">
