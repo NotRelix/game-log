@@ -14,6 +14,7 @@
   /* border */
   --primary-border: rgb(230, 230, 230);
   --muted-border: rgb(211, 211, 211);
+  --muted-hr: rgb(239, 239, 239);
 
   /* hover */
   --primary-bg-hover: rgb(245, 245, 245);
@@ -30,6 +31,7 @@
 
   /* border */
   --primary-border-dark: rgb(33, 33, 33);
+  --muted-hr-dark: rgb(31, 31, 31);
 
   /* hover */
   --primary-bg-hover-dark: rgb(23, 23, 23);

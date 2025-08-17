@@ -88,6 +88,12 @@ const Navbar = () => {
               >
                 {isAuthenticated ? (
                   <>
+                    {user && (
+                      <>
+                        <span className={`${styles.username}`}>{user.username}</span>
+                        <hr className={styles.hr} />
+                      </>
+                    )}
                     {loggedInMenuLinks.map((menu) => (
                       <Link
                         key={menu.id}
