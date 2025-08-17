@@ -1,0 +1,9 @@
+.successLight {
+  background: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+}
+
+.successDark {
+  background: var(--secondary-bg-dark) !important;
+  color: var(--primary-text-dark) !important;
+}

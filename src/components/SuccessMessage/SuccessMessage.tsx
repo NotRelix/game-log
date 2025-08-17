@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Bounce, toast } from "react-toastify";
-import styles from "../ErrorMessage/ErrorMessage.module.css";
+import styles from "../SuccessMessage/SuccessMessage.module.css";
 
 type SuccessMessageProps = {
   success: string[];
@@ -14,7 +14,7 @@ const SuccessMessage = ({ success, darkMode }: SuccessMessageProps) => {
       setTimeout(() => {
         const id = toast.success(msg, {
           toastId: `success-${msg}`,
-          className: darkMode ? styles.errorDark : styles.errorLight,
+          className: darkMode ? styles.successDark : styles.successLight,
           position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -33,7 +33,7 @@ const SuccessMessage = ({ success, darkMode }: SuccessMessageProps) => {
   useEffect(() => {
     toastIds.current.map((tid) => {
       toast.update(tid, {
-        className: darkMode ? styles.errorDark : styles.errorLight,
+        className: darkMode ? styles.successDark : styles.successLight,
         theme: darkMode ? "dark" : "light",
       });
     });
