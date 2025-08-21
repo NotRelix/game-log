@@ -1,0 +1,17 @@
+.miniContainer {
+  display: flex;
+  max-height: 100%;
+  flex: 1;
+  height: 100%;
+}
+
+.miniImageContainer {
+  aspect-ratio: 16 / 9;
+}
+
+.miniImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid blue;
+}

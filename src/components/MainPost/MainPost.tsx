@@ -8,12 +8,12 @@ interface MainPostProps {
 const MainPost = ({ post }: MainPostProps) => {
   console.log(post);
   return (
-    <div>
+    <div className={styles.mainContainer}>
       <div className={styles.imageContainer}>
         {post.headerImgPath ? (
-          <img src={post.headerImgPath} alt="" />
+          <img className={styles.mainImage} src={post.headerImgPath} alt="" />
         ) : (
-          <img alt="" />
+          <img className={styles.mainImage} alt="" />
         )}
       </div>
       <div>
