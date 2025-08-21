@@ -1,18 +1,31 @@
 import { useEffect, useState } from "react";
+import type { PostsType } from "../../types";
+import EditorsPicks from "../../components/EditorsPicks/EditorsPicks";
+
+const emptyPosts: PostsType = {
+  posts: [],
+  editorsPosts: [],
+};
 
 const Posts = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<PostsType>(emptyPosts);
   useEffect(() => {
     const fetchPost = async () => {
       const response = await fetch("http://localhost:3000/posts");
       const result = await response.json();
-      setPosts(result);
+      setPosts({ posts: result.posts, editorsPosts: result.editorsPosts });
     };
 
     fetchPost();
   }, []);
   console.log(posts);
-  return <div>Posts</div>;
+  return (
+    <div>
+      {posts.editorsPosts.length > 0 && (
+        <EditorsPicks posts={posts.editorsPosts} />
+      )}
+    </div>
+  );
 };
 
 export default Posts;

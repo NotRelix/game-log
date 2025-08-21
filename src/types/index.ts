@@ -17,6 +17,11 @@ export interface AuthType {
   exp: number;
 }
 
+export interface PostsType {
+  posts: PostType[];
+  editorsPosts: PostType[];
+}
+
 // Schema Types
 export interface PostType {
   id: number;
@@ -26,6 +31,7 @@ export interface PostType {
   createdAt: Date;
   updatedAt: Date;
   authorId: number;
+  headerImgPath: string | null;
 }
 
 export interface CommentType {
