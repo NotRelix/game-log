@@ -1,11 +1,14 @@
 .miniContainer {
   display: flex;
+  gap: 16px;
   max-height: 100%;
   flex: 1;
   height: 100%;
 }
 
 .miniImageContainer {
+  border-radius: 8px;
+  overflow: hidden;
   aspect-ratio: 16 / 9;
 }
 
@@ -13,5 +16,14 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: 1px solid blue;
+}
+
+.postText {
+  display: flex;
+  align-items: center;
+}
+
+.postTitle {
+  font-size: 20px;
+  font-weight: 500;
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { PostsType } from "../../types";
 import EditorsPicks from "../../components/EditorsPicks/EditorsPicks";
+import styles from "./Posts.module.css";
 
 const emptyPosts: PostsType = {
   posts: [],
@@ -20,7 +21,7 @@ const Posts = () => {
   }, []);
   console.log(posts);
   return (
-    <div>
+    <div className={styles.postsContainer}>
       {posts.editorsPosts.length > 0 && (
         <EditorsPicks posts={posts.editorsPosts} />
       )}

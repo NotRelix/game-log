@@ -15,8 +15,8 @@ const MiniPost = ({ post }: MiniPostProps) => {
           <img className={styles.miniImage} alt="" />
         )}
       </div>
-      <div>
-        <h1>{post.title}</h1>
+      <div className={styles.postText}>
+        <h1 className={styles.postTitle}>{post.title}</h1>
       </div>
     </div>
   );

@@ -1,5 +1,19 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mainImageContainer {
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
 .mainImage {
+  object-fit: cover;
   width: 100%;
-  height: 300px;
-  border: 1px solid red;
+  height: 100%;
+  display: block;
+  border: none;
 }
