@@ -21,8 +21,9 @@ const MainPost = ({ post }: MainPostProps) => {
           />
         )}
       </div>
-      <div>
+      <div className={styles.mainTextContainer}>
         <h1>{post.title}</h1>
+        <span>{post.authorId}</span>
       </div>
     </div>
   );

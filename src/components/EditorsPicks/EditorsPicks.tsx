@@ -10,8 +10,10 @@ interface EditorsPicksProps {
 const EditorsPicks = ({ posts }: EditorsPicksProps) => {
   return (
     <section className={styles.editorsPicksContainer}>
-      <h1>Editor's Picks</h1>
-      <p>Our best articles and guides from the best of the best.</p>
+      <div className={styles.editorsTextContainer}>
+        <h1>Editor's Picks</h1>
+        <p>Our best articles and guides from the best of the best.</p>
+      </div>
       <div className={styles.postsContainer}>
         <MainPost post={posts[0]} />
         <div className={styles.morePostsContainer}>
@@ -20,7 +22,6 @@ const EditorsPicks = ({ posts }: EditorsPicksProps) => {
           ))}
         </div>
       </div>
-      <span>by: {posts[0].authorId}</span>
     </section>
   );
 };

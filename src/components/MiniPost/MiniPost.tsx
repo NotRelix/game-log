@@ -1,5 +1,6 @@
 import type { PostType } from "../../types";
-import styles from "./MiniPost.module.css"
+import styles from "./MiniPost.module.css";
+import noImgPlaceholder from "../../assets/no-img-placeholder.jpg";
 
 interface MiniPostProps {
   post: PostType;
@@ -12,7 +13,7 @@ const MiniPost = ({ post }: MiniPostProps) => {
         {post.headerImgPath ? (
           <img className={styles.miniImage} src={post.headerImgPath} alt="" />
         ) : (
-          <img className={styles.miniImage} alt="" />
+          <img className={styles.miniImage} src={noImgPlaceholder} alt="" />
         )}
       </div>
       <div className={styles.postText}>

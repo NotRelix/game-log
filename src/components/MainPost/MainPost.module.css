@@ -1,7 +1,8 @@
 .mainContainer {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
+  flex: 4;
 }
 
 .mainImageContainer {
@@ -16,4 +17,10 @@
   height: 100%;
   display: block;
   border: none;
+}
+
+.mainTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
