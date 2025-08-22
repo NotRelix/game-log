@@ -19,7 +19,6 @@ const Posts = () => {
 
     fetchPost();
   }, []);
-  console.log(posts);
   return (
     <div className={styles.postsContainer}>
       {posts.editorsPosts.length > 0 && (

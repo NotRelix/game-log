@@ -18,7 +18,7 @@ const EditorsPicks = ({ posts }: EditorsPicksProps) => {
         <MainPost post={posts[0]} />
         <div className={styles.morePostsContainer}>
           {posts.slice(1).map((post) => (
-            <MiniPost post={post} />
+            <MiniPost key={post.id} post={post} />
           ))}
         </div>
       </div>
