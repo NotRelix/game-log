@@ -11,7 +11,7 @@ interface MainPostProps {
 const MainPost = ({ post, loading }: MainPostProps) => {
   const context = useContext(DarkModeContext);
   if (!context)
-    throw new Error("Register must be used inside a DarkModeProvider");
+    throw new Error("MainPost must be used inside a DarkModeProvider");
   const { darkMode } = context;
 
   if (loading) {
