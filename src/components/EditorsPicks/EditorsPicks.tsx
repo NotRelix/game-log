@@ -1,10 +1,10 @@
-import type { PostType } from "../../types";
+import type { EditorsPostsType } from "../../types";
 import MainPost from "../MainPost/MainPost";
 import MiniPost from "../MiniPost/MiniPost";
 import styles from "./EditorsPicks.module.css";
 
 interface EditorsPicksProps {
-  posts: PostType[];
+  posts: EditorsPostsType[];
 }
 
 const EditorsPicks = ({ posts }: EditorsPicksProps) => {

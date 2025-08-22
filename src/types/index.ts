@@ -19,8 +19,10 @@ export interface AuthType {
 
 export interface PostsType {
   posts: PostType[];
-  editorsPosts: PostType[];
+  editorsPosts: EditorsPostsType[];
 }
+
+export type EditorsPostsType = PostType & { author: string };
 
 // Schema Types
 export interface PostType {

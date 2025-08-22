@@ -1,8 +1,8 @@
-import type { PostType } from "../../types";
+import type { EditorsPostsType } from "../../types";
 import styles from "./MainPost.module.css";
 
 interface MainPostProps {
-  post: PostType;
+  post: EditorsPostsType;
 }
 
 const MainPost = ({ post }: MainPostProps) => {
@@ -23,7 +23,7 @@ const MainPost = ({ post }: MainPostProps) => {
       </div>
       <div className={styles.mainTextContainer}>
         <h1>{post.title}</h1>
-        <span>{post.authorId}</span>
+        <span>By: {post.author}</span>
       </div>
     </div>
   );
