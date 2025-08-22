@@ -11,6 +11,10 @@
   gap: 8px;
 }
 
+.editorsTextContainer h1 {
+  font-size: 30px;
+}
+
 .postsContainer {
   height: 100%;
   display: flex;
@@ -39,5 +43,10 @@
   .postsContainer {
     max-width: 700px;
     flex-direction: column;
+    gap: 16px;
+  }
+
+  .morePostsContainer {
+    gap: 16px;
   }
 }
