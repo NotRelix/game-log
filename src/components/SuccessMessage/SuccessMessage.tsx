@@ -22,7 +22,7 @@ const SuccessMessage = ({ success, darkMode }: SuccessMessageProps) => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "light",
+          theme: darkMode ? "dark" : "light",
           transition: Bounce,
         });
         toastIds.current.push(id.toString());
