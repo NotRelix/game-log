@@ -24,3 +24,20 @@
   gap: 32px;
   flex: 3;
 }
+
+@media (max-width: 980px) {
+  .editorsPicksContainer {
+    align-items: center;
+    max-height: 100%;
+  }
+
+  .editorsTextContainer {
+    max-width: 700px;
+    width: 100%;
+  }
+
+  .postsContainer {
+    max-width: 700px;
+    flex-direction: column;
+  }
+}
