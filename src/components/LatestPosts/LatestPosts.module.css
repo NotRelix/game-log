@@ -1,0 +1,21 @@
+.latestPostsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.latestTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.latestTextContainer h1 {
+  font-size: 30px;
+}
+
+.postsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
