@@ -5,13 +5,34 @@ import { DarkModeContext } from "../../context/DarkModeContext";
 
 interface MainPostProps {
   post: EditorsPostsType;
+  loading: boolean;
 }
 
-const MainPost = ({ post }: MainPostProps) => {
+const MainPost = ({ post, loading }: MainPostProps) => {
   const context = useContext(DarkModeContext);
   if (!context)
     throw new Error("Register must be used inside a DarkModeProvider");
   const { darkMode } = context;
+
+  if (loading) {
+    return (
+      <div className={`${styles.mainContainer} ${darkMode ? styles.dark : ""}`}>
+        <div className={styles.mainImageContainer}>
+          <div className={`${styles.mainImage} ${styles.skeleton}`}></div>
+        </div>
+        <div className={styles.mainTextContainer}>
+          <div className={`${styles.skeleton} ${styles.skeletonText}`}></div>
+          <div className={styles.profileContainer}>
+            <div className={`${styles.profileIcon} ${styles.skeleton}`}></div>
+            <div
+              className={`${styles.skeleton} ${styles.skeletonText} ${styles.skeletonTextShort}`}
+            ></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={`${styles.mainContainer} ${darkMode ? styles.dark : ""}`}>
       <div className={styles.mainImageContainer}>

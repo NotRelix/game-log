@@ -5,9 +5,10 @@ import styles from "./EditorsPicks.module.css";
 
 interface EditorsPicksProps {
   posts: EditorsPostsType[];
+  loading: boolean;
 }
 
-const EditorsPicks = ({ posts }: EditorsPicksProps) => {
+const EditorsPicks = ({ posts, loading }: EditorsPicksProps) => {
   return (
     <section className={styles.editorsPicksContainer}>
       <div className={styles.editorsTextContainer}>
@@ -15,7 +16,7 @@ const EditorsPicks = ({ posts }: EditorsPicksProps) => {
         <p>Our best articles and guides from the best of the best.</p>
       </div>
       <div className={styles.postsContainer}>
-        <MainPost post={posts[0]} />
+        <MainPost post={posts[0]} loading={loading} />
         <div className={styles.morePostsContainer}>
           {posts.slice(1).map((post) => (
             <MiniPost key={post.id} post={post} />
