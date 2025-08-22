@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import type { PostType } from "../../types";
 import Comments from "../../components/Comments/Comments";
+import ScrollToTop from "../../components/ScrollToTop";
 
 const Post = () => {
   const { postId } = useParams<{ postId: string }>();
@@ -27,6 +28,7 @@ const Post = () => {
 
   return (
     <div>
+      <ScrollToTop />
       <h1>{post.title}</h1>
       <p>{post.body}</p>
       <Comments postId={Number(postId)} />

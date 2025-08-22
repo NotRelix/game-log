@@ -3,6 +3,7 @@ import type { PostsType } from "../../types";
 import EditorsPicks from "../../components/EditorsPicks/EditorsPicks";
 import styles from "./Posts.module.css";
 import LatestPosts from "../../components/LatestPosts/LatestPosts";
+import ScrollToTop from "../../components/ScrollToTop";
 
 const emptyPosts: PostsType = {
   posts: [],
@@ -24,6 +25,7 @@ const Posts = () => {
   }, []);
   return (
     <div className={styles.postsContainer}>
+      <ScrollToTop />
       <EditorsPicks posts={posts.editorsPosts} loading={loading} />
       <LatestPosts posts={posts.posts.slice(0, 6)} loading={loading} />
     </div>
