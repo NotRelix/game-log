@@ -12,8 +12,13 @@ const Home = () => {
     <div className={`${styles.container} ${darkMode ? styles.dark : ""}`}>
       <ScrollToTop />
       <div className={styles.content}>
-        <h1>Hear Stories <span className={styles.supportingText}>from the</span> <br /> <span className={styles.virtualWorld}>Virtual World</span></h1>
-        <Link to={"/posts"} className={styles.startReading}>Start Reading</Link>
+        <h1>
+          Hear Stories <span className={styles.supportingText}>from the</span>{" "}
+          <br /> <span className={styles.virtualWorld}>Virtual World</span>
+        </h1>
+        <Link to={"/posts"} className={styles.startReading}>
+          Start Reading
+        </Link>
       </div>
     </div>
   );

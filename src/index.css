@@ -30,6 +30,7 @@
 
   /* text color */
   --primary-text-dark: rgb(235, 235, 235);
+  --secondary-text-dark: rgb(200, 200, 200);;
   --muted-text-dark: rgb(179, 179, 179);
   --primary-link-dark: rgb(103, 143, 255);
 

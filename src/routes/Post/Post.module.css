@@ -6,4 +6,54 @@
 .postContent {
   max-width: 700px;
   width: 100%;
+  text-align: justify;
+}
+
+.imageContainer {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.postContent h1,
+.postContent h2,
+.postContent h3,
+.postContent h4,
+.postContent h5,
+.postContent h6 {
+  margin-top: 36px;
+}
+
+.postContent h1 {
+  font-size: 28px;
+}
+
+#postTitle {
+  font-size: 36px;
+}
+
+.postContent p {
+  margin-top: 16px;
+  line-height: 2;
+  color: var(--secondary-text);
+}
+
+.dark .postContent p {
+  color: var(--secondary-text-dark);
+}
+
+.postContent a {
+  color: var(--primary-link);
+}
+
+.dark .postContent a {
+  color: var(--primary-link-dark);
 }

@@ -1,6 +1,6 @@
 import type { PostType } from "../../types";
 import styles from "./MiniPost.module.css";
-import noImgPlaceholder from "../../assets/no-img-placeholder.jpg";
+import noImgPlaceholder from "/no-img-placeholder.jpg";
 import { useContext } from "react";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import { useNavigate } from "react-router";
