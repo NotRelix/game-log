@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import type { EditorsPostsType } from "../../types";
 import styles from "./MainPost.module.css";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import { useNavigate } from "react-router";
+import type { PostType } from "../../types";
 
 interface MainPostProps {
-  post: EditorsPostsType;
+  post: PostType;
   loading: boolean;
 }
 
@@ -28,7 +28,9 @@ const MainPost = ({ post, loading }: MainPostProps) => {
           <div className={`${styles.mainImage} ${styles.skeleton}`}></div>
         </div>
         <div className={styles.mainTextContainer}>
-          <div className={`${styles.skeleton} ${styles.skeletonText} ${styles.skeletonHeaderText}`}></div>
+          <div
+            className={`${styles.skeleton} ${styles.skeletonText} ${styles.skeletonHeaderText}`}
+          ></div>
           <div className={styles.profileContainer}>
             <div className={`${styles.profileIcon} ${styles.skeleton}`}></div>
             <div

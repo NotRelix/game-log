@@ -45,7 +45,7 @@
   height: 30px;
   display: flex;
   border-radius: 50%;
-  background-color: rgb(38, 103, 255);
+  background-color: var(--profile-bg);
   color: var(--primary-text-dark);
 }
 

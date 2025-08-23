@@ -16,6 +16,7 @@ const emptyPost: PostType = {
   updatedAt: new Date(),
   authorId: -1,
   headerImgPath: "",
+  author: "",
 };
 
 const LatestPosts = ({ posts, loading }: LatestPostsType) => {

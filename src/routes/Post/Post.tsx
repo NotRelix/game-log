@@ -46,6 +46,12 @@ const Post = () => {
         </div>
         <div className={styles.contentContainer}>
           <h1 id={styles.postTitle}>{post.title}</h1>
+          <div className={styles.profileContainer}>
+            <span className={styles.profilePicture}>
+              {post.author[0].toUpperCase()}
+            </span>
+            <span>{post.author}</span>
+          </div>
           <div
             className={styles.bodyContainer}
             dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.body) }}
