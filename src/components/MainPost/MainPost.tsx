@@ -28,7 +28,7 @@ const MainPost = ({ post, loading }: MainPostProps) => {
           <div className={`${styles.mainImage} ${styles.skeleton}`}></div>
         </div>
         <div className={styles.mainTextContainer}>
-          <div className={`${styles.skeleton} ${styles.skeletonText}`}></div>
+          <div className={`${styles.skeleton} ${styles.skeletonText} ${styles.skeletonHeaderText}`}></div>
           <div className={styles.profileContainer}>
             <div className={`${styles.profileIcon} ${styles.skeleton}`}></div>
             <div

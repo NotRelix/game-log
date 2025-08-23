@@ -64,8 +64,12 @@
 
 .skeletonText {
   width: 100%;
-  height: 0.7em;
+  height: 1em;
   border-radius: 8px;
+}
+
+.skeletonHeaderText {
+  height: 1em;
 }
 
 .skeletonTextShort {

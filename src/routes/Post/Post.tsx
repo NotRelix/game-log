@@ -3,6 +3,10 @@ import { useParams } from "react-router";
 import type { PostType } from "../../types";
 import Comments from "../../components/Comments/Comments";
 import ScrollToTop from "../../components/ScrollToTop";
+import createDOMPurify from "dompurify";
+import styles from "./Post.module.css";
+
+const DOMPurify = createDOMPurify();
 
 const Post = () => {
   const { postId } = useParams<{ postId: string }>();
@@ -23,16 +27,21 @@ const Post = () => {
   }, [postId]);
 
   if (!post) {
-    return <div>Error</div>;
+    return <div>Loading...</div>;
   }
 
   return (
-    <div>
+    <section className={styles.postContainer}>
       <ScrollToTop />
-      <h1>{post.title}</h1>
-      <p>{post.body}</p>
-      <Comments postId={Number(postId)} />
-    </div>
+      <div className={styles.postContent}>
+        <h1>{post.title}</h1>
+        <div
+          className={styles.bodyContainer}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.body) }}
+        ></div>
+        <Comments postId={Number(postId)} />
+      </div>
+    </section>
   );
 };
 
