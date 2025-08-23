@@ -1,10 +1,10 @@
-import type { EditorsPostsType, PostType } from "../../types";
+import type { PostType } from "../../types";
 import MainPost from "../MainPost/MainPost";
 import MiniPost from "../MiniPost/MiniPost";
 import styles from "./EditorsPicks.module.css";
 
 interface EditorsPicksProps {
-  posts: EditorsPostsType[];
+  posts: PostType[];
   loading: boolean;
 }
 
@@ -17,6 +17,7 @@ const emptyPost: PostType = {
   updatedAt: new Date(),
   authorId: -1,
   headerImgPath: "",
+  author: "",
 };
 
 const EditorsPicks = ({ posts, loading }: EditorsPicksProps) => {

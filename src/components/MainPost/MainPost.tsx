@@ -3,6 +3,7 @@ import styles from "./MainPost.module.css";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import { useNavigate } from "react-router";
 import type { PostType } from "../../types";
+import MainPostLoading from "./MainPostLoading";
 
 interface MainPostProps {
   post: PostType;
@@ -22,24 +23,7 @@ const MainPost = ({ post, loading }: MainPostProps) => {
   };
 
   if (loading) {
-    return (
-      <div className={`${styles.mainContainer} ${darkMode ? styles.dark : ""}`}>
-        <div className={styles.mainImageContainer}>
-          <div className={`${styles.mainImage} ${styles.skeleton}`}></div>
-        </div>
-        <div className={styles.mainTextContainer}>
-          <div
-            className={`${styles.skeleton} ${styles.skeletonText} ${styles.skeletonHeaderText}`}
-          ></div>
-          <div className={styles.profileContainer}>
-            <div className={`${styles.profileIcon} ${styles.skeleton}`}></div>
-            <div
-              className={`${styles.skeleton} ${styles.skeletonText} ${styles.skeletonTextShort}`}
-            ></div>
-          </div>
-        </div>
-      </div>
-    );
+    return <MainPostLoading />;
   }
 
   return (

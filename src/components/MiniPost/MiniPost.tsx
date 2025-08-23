@@ -1,9 +1,8 @@
 import type { PostType } from "../../types";
 import styles from "./MiniPost.module.css";
 import noImgPlaceholder from "/no-img-placeholder.jpg";
-import { useContext } from "react";
-import { DarkModeContext } from "../../context/DarkModeContext";
 import { useNavigate } from "react-router";
+import MiniPostLoading from "./MiniPostLoading";
 
 interface MiniPostProps {
   post: PostType;
@@ -12,10 +11,6 @@ interface MiniPostProps {
 
 const MiniPost = ({ post, loading }: MiniPostProps) => {
   const navigate = useNavigate();
-  const context = useContext(DarkModeContext);
-  if (!context)
-    throw new Error("MiniPost must be used inside a DarkModeProvider");
-  const { darkMode } = context;
 
   const handleClick = () => {
     if (!post.id) return;
@@ -23,21 +18,7 @@ const MiniPost = ({ post, loading }: MiniPostProps) => {
   };
 
   if (loading) {
-    return (
-      <div className={`${styles.miniContainer} ${darkMode ? styles.dark : ""}`}>
-        <div className={styles.miniImageContainer}>
-          <div className={`${styles.miniImage} ${styles.skeleton}`}></div>
-        </div>
-        <div className={`${styles.postText} ${styles.skeletonTextContainer}`}>
-          <div
-            className={`${styles.postTitle} ${styles.skeleton} ${styles.skeletonText}`}
-          ></div>
-          <div
-            className={`${styles.postTitle} ${styles.skeleton} ${styles.skeletonText}`}
-          ></div>
-        </div>
-      </div>
-    );
+    return <MiniPostLoading />;
   }
 
   return (
