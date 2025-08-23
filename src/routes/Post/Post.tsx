@@ -6,6 +6,7 @@ import ScrollToTop from "../../components/ScrollToTop";
 import createDOMPurify from "dompurify";
 import styles from "./Post.module.css";
 import { DarkModeContext } from "../../context/DarkModeContext";
+import { formatLongDate } from "../../utils/dateFormatter";
 
 const DOMPurify = createDOMPurify();
 
@@ -51,6 +52,8 @@ const Post = () => {
               {post.author[0].toUpperCase()}
             </span>
             <span>{post.author}</span>
+            <span className={styles.dateText}>&#183;</span>
+            <span className={styles.dateText}>{formatLongDate(post.createdAt)}</span>
           </div>
           <div
             className={styles.bodyContainer}

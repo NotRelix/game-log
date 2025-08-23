@@ -55,7 +55,16 @@
   width: 30px;
   height: 30px;
   background-color: var(--profile-bg);
+  color: var(--primary-text-dark);
   border-radius: 50%;
+}
+
+.dateText {
+  color: var(--muted-text);
+}
+
+.dark .dateText {
+  color: var(--muted-text-dark);
 }
 
 .postContent p {
