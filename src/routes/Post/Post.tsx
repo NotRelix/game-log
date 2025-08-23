@@ -7,6 +7,7 @@ import createDOMPurify from "dompurify";
 import styles from "./Post.module.css";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import { formatLongDate } from "../../utils/dateFormatter";
+import PostLoading from "./PostLoading";
 
 const DOMPurify = createDOMPurify();
 
@@ -33,7 +34,7 @@ const Post = () => {
   }, [postId]);
 
   if (!post) {
-    return <div>Loading...</div>;
+    return <PostLoading />;
   }
 
   return (
@@ -43,7 +44,7 @@ const Post = () => {
       <ScrollToTop />
       <div className={styles.postContent}>
         <div className={styles.imageContainer}>
-          <img src={headerLink} alt="" />
+          <img className={styles.imageHeader} src={headerLink} alt="" />
         </div>
         <div className={styles.contentContainer}>
           <h1 id={styles.postTitle}>{post.title}</h1>
@@ -53,7 +54,9 @@ const Post = () => {
             </span>
             <span>{post.author}</span>
             <span className={styles.dateText}>&#183;</span>
-            <span className={styles.dateText}>{formatLongDate(post.createdAt)}</span>
+            <span className={styles.dateText}>
+              {formatLongDate(post.createdAt)}
+            </span>
           </div>
           <div
             className={styles.bodyContainer}
