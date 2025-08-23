@@ -30,6 +30,7 @@
 .postContent h5,
 .postContent h6 {
   margin-top: 36px;
+  text-align: left;
 }
 
 .postContent h1 {
@@ -41,7 +42,7 @@
 }
 
 .postContent p {
-  margin-top: 16px;
+  margin-top: 24px;
   line-height: 2;
   color: var(--secondary-text);
 }
@@ -56,4 +57,33 @@
 
 .dark .postContent a {
   color: var(--primary-link-dark);
+}
+
+.bodyContainer img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 750px) {
+  .postContent {
+    max-width: 100%;
+  }
+
+  .imageContainer {
+    border-radius: 0;
+    height: 400px;
+    width: 100%;
+  }
+
+  .contentContainer {
+    padding: 24px;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentContainer {
+    padding: 16px;
+    padding-top: 0;
+  }
 }

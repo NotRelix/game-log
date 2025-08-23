@@ -44,12 +44,14 @@ const Post = () => {
         <div className={styles.imageContainer}>
           <img src={headerLink} alt="" />
         </div>
-        <h1 id={styles.postTitle}>{post.title}</h1>
-        <div
-          className={styles.bodyContainer}
-          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.body) }}
-        ></div>
-        <Comments postId={Number(postId)} />
+        <div className={styles.contentContainer}>
+          <h1 id={styles.postTitle}>{post.title}</h1>
+          <div
+            className={styles.bodyContainer}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.body) }}
+          ></div>
+          <Comments postId={Number(postId)} />
+        </div>
       </div>
     </section>
   );
