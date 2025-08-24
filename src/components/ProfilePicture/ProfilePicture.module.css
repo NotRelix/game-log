@@ -13,3 +13,7 @@
 .profileContainer span {
   font-weight: 500;
 }
+
+.noUser {
+  background-color: rgb(42, 134, 255);
+}

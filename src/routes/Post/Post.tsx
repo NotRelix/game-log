@@ -50,7 +50,7 @@ const Post = () => {
         <div className={styles.contentContainer}>
           <h1 id={styles.postTitle}>{post.title}</h1>
           <div className={styles.profileContainer}>
-            <ProfilePicture post={post} />
+            <ProfilePicture username={post.author} />
             <span>{post.author}</span>
             <span className={styles.dateText}>&#183;</span>
             <span className={styles.dateText}>

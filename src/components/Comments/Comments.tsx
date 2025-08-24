@@ -1,6 +1,8 @@
 import { useEffect, useState, type FormEvent, type JSX } from "react";
 import type { CommentsType } from "../../types";
 import styles from "./Comments.module.css";
+import ProfilePicture from "../ProfilePicture/ProfilePicture";
+import { useAuth } from "../../hooks/useAuth";
 
 type CommentsProps = {
   postId: number;
@@ -9,6 +11,7 @@ type CommentsProps = {
 const Comments = ({ postId }: CommentsProps): JSX.Element => {
   const [comments, setComments] = useState<CommentsType | null>(null);
   const [commentInput, setCommentInput] = useState<string>("");
+  const { user } = useAuth();
   useEffect(() => {
     const fetchComments = async () => {
       const response = await fetch(
@@ -28,7 +31,6 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
       comment: commentInput,
     };
     const token = localStorage.getItem("token") || "";
-    console.log(token);
     const response = await fetch(
       `http://localhost:3000/posts/${postId}/comments`,
       {
@@ -60,9 +62,12 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
 
   return (
     <div>
-      <h1>{comments.totalCount} {comments.totalCount === 1 ? "Comment" : "Comments"}</h1>
+      <h1>
+        {comments.totalCount}{" "}
+        {comments.totalCount === 1 ? "Comment" : "Comments"}
+      </h1>
       <form onSubmit={handlePostComment}>
-        <label htmlFor="comment">Comment</label>
+        <ProfilePicture username={user?.username} />
         <input
           type="text"
           id="comment"

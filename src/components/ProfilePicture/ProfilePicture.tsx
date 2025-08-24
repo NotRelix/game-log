@@ -1,14 +1,21 @@
-import type { PostType } from "../../types";
+import { User } from "lucide-react";
 import styles from "./ProfilePicture.module.css";
 
 interface ProfilePictureProps {
-  post: PostType;
+  username: string | undefined;
 }
 
-const ProfilePicture = ({ post }: ProfilePictureProps) => {
+const ProfilePicture = ({ username }: ProfilePictureProps) => {
+  if (!username) {
+    return (
+      <div className={`${styles.profileIcon} ${styles.noUser}`}>
+        <User />
+      </div>
+    );
+  }
   return (
     <div className={styles.profileIcon}>
-      <span>{post.author[0].toUpperCase()}</span>
+      <span>{username[0].toUpperCase()}</span>
     </div>
   );
 };
