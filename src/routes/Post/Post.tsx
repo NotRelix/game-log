@@ -8,6 +8,7 @@ import styles from "./Post.module.css";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import { formatLongDate } from "../../utils/dateFormatter";
 import PostLoading from "./PostLoading";
+import ProfilePicture from "../../components/ProfilePicture/ProfilePicture";
 
 const DOMPurify = createDOMPurify();
 
@@ -49,9 +50,7 @@ const Post = () => {
         <div className={styles.contentContainer}>
           <h1 id={styles.postTitle}>{post.title}</h1>
           <div className={styles.profileContainer}>
-            <span className={styles.profilePicture}>
-              {post.author[0].toUpperCase()}
-            </span>
+            <ProfilePicture post={post} />
             <span>{post.author}</span>
             <span className={styles.dateText}>&#183;</span>
             <span className={styles.dateText}>

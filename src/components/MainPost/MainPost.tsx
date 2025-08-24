@@ -4,6 +4,7 @@ import { DarkModeContext } from "../../context/DarkModeContext";
 import { useNavigate } from "react-router";
 import type { PostType } from "../../types";
 import MainPostLoading from "./MainPostLoading";
+import ProfilePicture from "../ProfilePicture/ProfilePicture";
 
 interface MainPostProps {
   post: PostType;
@@ -45,9 +46,7 @@ const MainPost = ({ post, loading }: MainPostProps) => {
       <div className={styles.mainTextContainer}>
         <h1>{post.title}</h1>
         <div className={styles.profileContainer}>
-          <div className={styles.profileIcon}>
-            <span>{post.author[0].toUpperCase()}</span>
-          </div>
+          <ProfilePicture post={post} />
           <span>{post.author}</span>
         </div>
       </div>

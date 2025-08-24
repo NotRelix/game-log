@@ -37,22 +37,6 @@
   gap: 8px;
 }
 
-.profileIcon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  border-radius: 50%;
-  background-color: var(--profile-bg);
-  color: var(--primary-text-dark);
-}
-
-.profileContainer span {
-  font-weight: 500;
-}
-
 /* Loading */
 .skeleton {
   animation: skeleton-loading 1s linear infinite alternate;
