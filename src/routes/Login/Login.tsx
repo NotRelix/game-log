@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import type { LoginType } from "../../types";
 import { MessageContext } from "../../context/MessageContext";
+import ScrollToTop from "../../components/ScrollToTop";
 
 const emptyLogin: LoginType = {
   username: "",
@@ -49,6 +50,7 @@ const Login = () => {
         darkMode ? registerStyles.dark : ""
       }`}
     >
+      <ScrollToTop />
       <div className={registerStyles.loginContainer}>
         <h1 className={registerStyles.header}>Login</h1>
         <p>

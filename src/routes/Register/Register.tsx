@@ -4,6 +4,7 @@ import { DarkModeContext } from "../../context/DarkModeContext";
 import { Link } from "react-router";
 import type { RegisterType } from "../../types";
 import { MessageContext } from "../../context/MessageContext";
+import ScrollToTop from "../../components/ScrollToTop";
 
 const emptyRegister: RegisterType = {
   username: "",
@@ -42,6 +43,7 @@ const Register = () => {
   };
   return (
     <div className={`${styles.container} ${darkMode ? styles.dark : ""}`}>
+      <ScrollToTop />
       <div className={styles.registerContainer}>
         <h1 className={styles.header}>Register</h1>
         <p>
