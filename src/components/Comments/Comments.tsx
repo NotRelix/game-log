@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent, type JSX } from "react";
-import type { CommentType } from "../../types";
+import type { CommentsType } from "../../types";
 import styles from "./Comments.module.css";
 
 type CommentsProps = {
@@ -7,7 +7,7 @@ type CommentsProps = {
 };
 
 const Comments = ({ postId }: CommentsProps): JSX.Element => {
-  const [comments, setComments] = useState<CommentType[] | null>(null);
+  const [comments, setComments] = useState<CommentsType | null>(null);
   const [commentInput, setCommentInput] = useState<string>("");
   useEffect(() => {
     const fetchComments = async () => {
@@ -42,7 +42,13 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
     );
     const result = await response.json();
     setComments((prev) =>
-      prev ? [result.comment, ...prev] : [result.comment]
+      prev
+        ? {
+            ...prev,
+            comments: [result.comment, ...prev.comments],
+            totalCount: prev.totalCount + 1,
+          }
+        : { comments: [result.comment], totalCount: 1 }
     );
     setCommentInput("");
     console.log(result);
@@ -54,7 +60,7 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
 
   return (
     <div>
-      <h1>Comments Section:</h1>
+      <h1>{comments.totalCount} {comments.totalCount === 1 ? "Comment" : "Comments"}</h1>
       <form onSubmit={handlePostComment}>
         <label htmlFor="comment">Comment</label>
         <input
@@ -67,7 +73,7 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
         <button type="submit">Post</button>
       </form>
       <div className={styles.commentsContainer}>
-        {comments.map((comment) => (
+        {comments.comments.map((comment) => (
           <span key={comment.id}>
             {comment.comment} {new Date(comment.createdAt).toLocaleString()}
           </span>

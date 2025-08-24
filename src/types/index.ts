@@ -22,6 +22,11 @@ export interface PostsType {
   editorsPosts: PostType[];
 }
 
+export interface CommentsType {
+  comments: CommentType[];
+  totalCount: number;
+}
+
 // Schema Types
 export interface PostType {
   id: number;
@@ -36,6 +41,16 @@ export interface PostType {
 }
 
 export interface CommentType {
+  id: number;
+  comment: string;
+  createdAt: Date;
+  updatedAt: Date;
+  postId: number;
+  authorId: number;
+  replies: ReplyType[];
+}
+
+export interface ReplyType {
   id: number;
   comment: string;
   createdAt: Date;
