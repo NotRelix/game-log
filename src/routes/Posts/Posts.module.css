@@ -13,6 +13,12 @@
   width: 100%;
 }
 
+@media (max-width: 980px) {
+  .postsContainer {
+    gap: 60px;
+  }
+}
+
 @media (max-width: 480px) {
   .postsContainer {
     padding: 36px 16px;
