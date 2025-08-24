@@ -106,7 +106,11 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
           readOnly={!isAuthenticated}
           required
         />
-        <button className={styles.submitComment} type="submit">
+        <button
+          className={styles.submitComment}
+          type="submit"
+          onClick={() => !isAuthenticated && handleCommentClick()}
+        >
           <SendHorizonal className={styles.submitIcon} />
         </button>
       </form>

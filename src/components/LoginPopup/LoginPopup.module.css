@@ -1,0 +1,22 @@
+.loginBackdrop {
+  z-index: 998;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.loginPopupContainer {
+  z-index: 999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-bg);
+}
+
+.dark.loginPopupContainer {
+  background-color: var(--primary-bg-dark);
+}
