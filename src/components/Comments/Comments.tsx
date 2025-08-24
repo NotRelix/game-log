@@ -10,6 +10,7 @@ import styles from "./Comments.module.css";
 import ProfilePicture from "../ProfilePicture/ProfilePicture";
 import { useAuth } from "../../hooks/useAuth";
 import { DarkModeContext } from "../../context/DarkModeContext";
+import { SendHorizonal } from "lucide-react";
 
 type CommentsProps = {
   postId: number;
@@ -18,7 +19,7 @@ type CommentsProps = {
 const Comments = ({ postId }: CommentsProps): JSX.Element => {
   const [comments, setComments] = useState<CommentsType | null>(null);
   const [commentInput, setCommentInput] = useState<string>("");
-  const { user } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const context = useContext(DarkModeContext);
   if (!context)
     throw new Error("Comments must be used inside a DarkModeProvider");
@@ -67,12 +68,21 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
     console.log(result);
   };
 
+  const handleCommentClick = () => {
+    if (isAuthenticated) return;
+    
+  }
+
   if (!comments) {
     return <div>Error</div>;
   }
 
   return (
-    <div className={`${styles.commentsEntireContainer} ${darkMode ? styles.dark : ""}`}>
+    <div
+      className={`${styles.commentsEntireContainer} ${
+        darkMode ? styles.dark : ""
+      }`}
+    >
       <h1 className={styles.commentsHeading}>
         {comments.totalCount}{" "}
         {comments.totalCount === 1 ? "Comment" : "Comments"}
@@ -86,8 +96,13 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
           value={commentInput}
           placeholder="Add a comment..."
           onChange={(e) => setCommentInput(e.target.value)}
+          onClick={handleCommentClick}
+          readOnly={!isAuthenticated}
+          required
         />
-        <button type="submit">Post</button>
+        <button className={styles.submitComment} type="submit">
+          <SendHorizonal className={styles.submitIcon} />
+        </button>
       </form>
       <div className={styles.commentsContainer}>
         {comments.comments.map((comment) => (

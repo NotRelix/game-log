@@ -8,6 +8,7 @@
   border-radius: 50%;
   background-color: var(--profile-bg);
   color: var(--primary-text-dark);
+  padding: 6px;
 }
 
 .profileContainer span {

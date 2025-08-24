@@ -13,6 +13,7 @@
   --primary-link: rgb(71, 114, 233);
 
   /* border */
+  --bold-border: rgb(167, 167, 167);
   --primary-border: rgb(230, 230, 230);
   --muted-border: rgb(211, 211, 211);
   --muted-hr: rgb(239, 239, 239);
@@ -36,6 +37,7 @@
   --primary-link-dark: rgb(103, 143, 255);
 
   /* border */
+  --bold-border-dark: rgb(91, 91, 91);
   --primary-border-dark: rgb(33, 33, 33);
   --muted-hr-dark: rgb(31, 31, 31);
 

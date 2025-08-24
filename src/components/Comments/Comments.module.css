@@ -26,10 +26,28 @@
   background-color: var(--primary-bg);
   border: 1px solid var(--muted-border);
   border-radius: 16px;
-  padding: 8px;
+  padding: 8px 12px;
+  color: var(--primary-text);
 }
 
 .dark .commentForm input {
   background-color: var(--primary-dark-bg);
   border: 2px solid var(--primary-border-dark);
+  color: var(--primar-text-dark);
+}
+
+.submitComment {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.submitIcon {
+  stroke: var(--bold-border);
+}
+
+.dark .submitIcon {
+  stroke: var(--bold-border-dark);
 }
