@@ -11,6 +11,7 @@ import ProfilePicture from "../ProfilePicture/ProfilePicture";
 import { useAuth } from "../../hooks/useAuth";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import { SendHorizonal } from "lucide-react";
+import { PopupContext } from "../../context/PopupContext";
 
 type CommentsProps = {
   postId: number;
@@ -20,10 +21,15 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
   const [comments, setComments] = useState<CommentsType | null>(null);
   const [commentInput, setCommentInput] = useState<string>("");
   const { isAuthenticated, user } = useAuth();
-  const context = useContext(DarkModeContext);
-  if (!context)
+  const darkModeContext = useContext(DarkModeContext);
+  const popupContext = useContext(PopupContext);
+  if (!darkModeContext)
     throw new Error("Comments must be used inside a DarkModeProvider");
-  const { darkMode } = context;
+  if (!popupContext) {
+    throw new Error("Comments must be used inside a PopupProvider");
+  }
+  const { darkMode } = darkModeContext;
+  const { setLoginPopupOpen } = popupContext;
   useEffect(() => {
     const fetchComments = async () => {
       const response = await fetch(
@@ -70,8 +76,8 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
 
   const handleCommentClick = () => {
     if (isAuthenticated) return;
-    
-  }
+    setLoginPopupOpen(true);
+  };
 
   if (!comments) {
     return <div>Error</div>;

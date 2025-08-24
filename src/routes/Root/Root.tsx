@@ -8,6 +8,7 @@ import { MessageContext } from "../../context/MessageContext";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import SuccessMessage from "../../components/SuccessMessage/SuccessMessage";
 import { Bounce, ToastContainer } from "react-toastify";
+import LoginPopup from "../../components/LoginPopup/LoginPopup";
 
 const Root = () => {
   const { errors, success } = useContext(MessageContext)!;
@@ -17,6 +18,7 @@ const Root = () => {
   return (
     <div className={`${styles.container} ${darkMode && styles.dark}`}>
       <div className={styles.screenContainer}>
+        <LoginPopup />
         <Navbar />
         <main className={styles.main}>
           <ToastContainer

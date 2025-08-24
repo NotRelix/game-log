@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import routes from "./routes/routes";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import { MessageProvider } from "./context/MessageContext";
+import { PopupProvider } from "./context/PopupContext";
 
 const router = createBrowserRouter(routes);
 
@@ -12,7 +13,9 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <MessageProvider>
       <DarkModeProvider>
-        <RouterProvider router={router} />
+        <PopupProvider>
+          <RouterProvider router={router} />
+        </PopupProvider>
       </DarkModeProvider>
     </MessageProvider>
   </StrictMode>
