@@ -36,7 +36,72 @@ const PostLoading = () => {
               className={`${styles.skeletonTextShort} ${styles.skeleton}`}
             ></div>
           </div>
-          <div className={styles.bodyContainer}></div>
+          <div className={styles.bodyContainer}>
+            <h1
+              className={`${styles.skeleton} ${styles.skeletonTextShort}`}
+            ></h1>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonTextLast}`}></p>
+
+            <h1
+              className={`${styles.skeleton} ${styles.skeletonTextHalf}`}
+            ></h1>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonTextShort}`}></p>
+
+            <h1
+              className={`${styles.skeleton} ${styles.skeletonTextVeryShort}`}
+            ></h1>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonTextHalf}`}></p>
+
+            <h1
+              className={`${styles.skeleton} ${styles.skeletonTextShort}`}
+            ></h1>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p
+              className={`${styles.skeleton} ${styles.skeletonTextVeryShort}`}
+            ></p>
+
+            <div className={`${styles.skeleton} ${styles.imageContainerBody}`}>
+              <div className={`${styles.imageBody}`}></div>
+            </div>
+
+            <h1
+              className={`${styles.skeleton} ${styles.skeletonTextShort}`}
+            ></h1>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonTextLast}`}></p>
+
+            <h1
+              className={`${styles.skeleton} ${styles.skeletonTextHalf}`}
+            ></h1>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonTextShort}`}></p>
+
+            <h1
+              className={`${styles.skeleton} ${styles.skeletonTextVeryShort}`}
+            ></h1>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonTextHalf}`}></p>
+
+            <h1
+              className={`${styles.skeleton} ${styles.skeletonTextShort}`}
+            ></h1>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p className={`${styles.skeleton} ${styles.skeletonText}`}></p>
+            <p
+              className={`${styles.skeleton} ${styles.skeletonTextVeryShort}`}
+            ></p>
+          </div>
+
           <Comments postId={-1} />
         </div>
       </div>

@@ -124,8 +124,10 @@
 }
 
 .skeletonText,
+.skeletonTextLast,
 .skeletonHeaderText,
 .skeletonHeaderTextLast,
+.skeletonTextHalf,
 .skeletonTextShort,
 .skeletonTextVeryShort {
   border-radius: 8px;
@@ -133,10 +135,11 @@
 
 .skeletonText {
   width: 100%;
-  height: 0.7em;
+  height: 1em;
 }
 
-.skeletonText:last-child {
+.skeletonTextLast {
+  height: 1em;
   width: 80%;
 }
 
@@ -155,14 +158,26 @@ h1.skeletonHeaderReset {
   height: 1em;
 }
 
+.skeletonTextHalf {
+  width: 50%;
+  height: 1em;
+}
+
 .skeletonTextShort {
-  width: 20%;
+  width: 200px;
   height: 1em;
 }
 
 .skeletonTextVeryShort {
-  width: 10%;
+  width: 100px;
   height: 1em;
+}
+
+.imageContainerBody {
+  margin-top: 36px;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
 }
 
 @keyframes skeleton-loading {
