@@ -1,8 +1,15 @@
-import { useEffect, useState, type FormEvent, type JSX } from "react";
+import {
+  useContext,
+  useEffect,
+  useState,
+  type FormEvent,
+  type JSX,
+} from "react";
 import type { CommentsType } from "../../types";
 import styles from "./Comments.module.css";
 import ProfilePicture from "../ProfilePicture/ProfilePicture";
 import { useAuth } from "../../hooks/useAuth";
+import { DarkModeContext } from "../../context/DarkModeContext";
 
 type CommentsProps = {
   postId: number;
@@ -12,6 +19,10 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
   const [comments, setComments] = useState<CommentsType | null>(null);
   const [commentInput, setCommentInput] = useState<string>("");
   const { user } = useAuth();
+  const context = useContext(DarkModeContext);
+  if (!context)
+    throw new Error("Comments must be used inside a DarkModeProvider");
+  const { darkMode } = context;
   useEffect(() => {
     const fetchComments = async () => {
       const response = await fetch(
@@ -61,18 +72,19 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
   }
 
   return (
-    <div>
-      <h1>
+    <div className={`${styles.commentsEntireContainer} ${darkMode ? styles.dark : ""}`}>
+      <h1 className={styles.commentsHeading}>
         {comments.totalCount}{" "}
         {comments.totalCount === 1 ? "Comment" : "Comments"}
       </h1>
-      <form onSubmit={handlePostComment}>
+      <form className={styles.commentForm} onSubmit={handlePostComment}>
         <ProfilePicture username={user?.username} />
         <input
           type="text"
           id="comment"
           name="comment"
           value={commentInput}
+          placeholder="Add a comment..."
           onChange={(e) => setCommentInput(e.target.value)}
         />
         <button type="submit">Post</button>

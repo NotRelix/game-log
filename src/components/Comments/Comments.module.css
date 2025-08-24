@@ -1,5 +1,35 @@
+.commentsEntireContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.commentsEntireContainer .commentsHeading {
+  font-size: 24px;
+}
+
 .commentsContainer {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.commentForm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.commentForm input {
+  flex: 1;
+  background-color: var(--primary-bg);
+  border: 1px solid var(--muted-border);
+  border-radius: 16px;
+  padding: 8px;
+}
+
+.dark .commentForm input {
+  background-color: var(--primary-dark-bg);
+  border: 2px solid var(--primary-border-dark);
 }
