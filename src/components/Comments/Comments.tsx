@@ -38,7 +38,6 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
       );
       const result = await response.json();
       setComments(result.comments);
-      console.log(result);
     };
 
     fetchComments();
@@ -72,7 +71,6 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
         : { comments: [result.comment], totalCount: 1 }
     );
     setCommentInput("");
-    console.log(result);
   };
 
   const handleCommentClick = () => {
@@ -120,7 +118,7 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
       </form>
       <div className={styles.commentsContainer}>
         {comments.comments.map((comment) => (
-          <Comment comment={comment} />
+          <Comment key={comment.id} comment={comment} />
         ))}
       </div>
     </div>

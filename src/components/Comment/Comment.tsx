@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, type FormEvent } from "react";
 import type { CommentType } from "../../types";
 import ProfilePicture from "../ProfilePicture/ProfilePicture";
 import styles from "./Comment.module.css";
@@ -6,6 +6,7 @@ import { DarkModeContext } from "../../context/DarkModeContext";
 import { PopupContext } from "../../context/PopupContext";
 import { useAuth } from "../../hooks/useAuth";
 import { SendHorizonal } from "lucide-react";
+import { useParams } from "react-router";
 
 interface CommentProps {
   comment: CommentType;
@@ -24,10 +25,29 @@ const Comment = ({ comment }: CommentProps) => {
   const { setLoginPopupOpen, setIsLoginPopupVisible } = popupContext;
   const [replyInputOpen, setReplyInputOpen] = useState<boolean>(false);
   const [replyInput, setReplyInput] = useState<string>("");
+  const { postId } = useParams();
 
-  const handleReplyComment = () => {
-      
-  }
+  const handleReplyComment = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = {
+      comment: replyInput,
+    };
+    const token = localStorage.getItem("token");
+    const response = await fetch(
+      `http://localhost:3000/posts/${postId}/comments/${comment.id}/replies`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await response.json();
+    setReplyInput("");
+    console.log(result);
+  };
 
   const handleReplyClick = () => {
     if (!isAuthenticated) {
@@ -44,7 +64,6 @@ const Comment = ({ comment }: CommentProps) => {
     setReplyInputOpen(false);
   };
 
-  console.log(comment);
   return (
     <div
       className={`${styles.commentContainer} ${darkMode ? styles.dark : ""}`}

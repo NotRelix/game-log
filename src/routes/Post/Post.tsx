@@ -25,7 +25,6 @@ const Post = () => {
         const response = await fetch(`http://localhost:3000/posts/${postId}`);
         const result: { post: PostType } = await response.json();
         setPost(result.post);
-        console.log(result);
       } catch (err) {
         console.error(err);
       }
