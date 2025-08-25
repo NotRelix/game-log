@@ -34,7 +34,7 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
   useEffect(() => {
     const fetchComments = async () => {
       const response = await fetch(
-        `http://localhost:3000/posts/${postId}/comments`
+        `${import.meta.env.VITE_API_URL}posts/${postId}/comments`
       );
       const result = await response.json();
       setComments(result.comments);
@@ -50,7 +50,7 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
     };
     const token = localStorage.getItem("token") || "";
     const response = await fetch(
-      `http://localhost:3000/posts/${postId}/comments`,
+      `${import.meta.env.VITE_API_URL}posts/${postId}/comments`,
       {
         method: "POST",
         headers: {

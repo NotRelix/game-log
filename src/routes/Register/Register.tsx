@@ -19,11 +19,10 @@ const Register = () => {
   if (!context)
     throw new Error("Register must be used inside a DarkModeProvider");
   const { darkMode } = context;
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/register", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

@@ -18,7 +18,7 @@ export const useAuth = () => {
         setIsAuthenticated(false);
         return;
       }
-      const response = await fetch("http://localhost:3000/auth/validate", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}auth/validate`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

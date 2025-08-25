@@ -33,7 +33,7 @@ const Comment = ({ comment }: CommentProps) => {
   useEffect(() => {
     const fetchReplies = async () => {
       const response = await fetch(
-        `http://localhost:3000/posts/${postId}/comments/${comment.id}/replies`
+        `${import.meta.env.VITE_API_URL}posts/${postId}/comments/${comment.id}/replies`
       );
       const result = await response.json();
       setReplies(result.replies);
@@ -49,7 +49,7 @@ const Comment = ({ comment }: CommentProps) => {
     };
     const token = localStorage.getItem("token");
     const response = await fetch(
-      `http://localhost:3000/posts/${postId}/comments/${comment.id}/replies`,
+      `${import.meta.env.VITE_API_URL}posts/${postId}/comments/${comment.id}/replies`,
       {
         method: "POST",
         headers: {

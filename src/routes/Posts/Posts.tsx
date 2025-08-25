@@ -15,7 +15,7 @@ const Posts = () => {
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     const fetchPost = async () => {
-      const response = await fetch("http://localhost:3000/posts");
+      const response = await fetch(`${import.meta.env.VITE_API_URL}posts`);
       const result = await response.json();
       setPosts({ posts: result.posts, editorsPosts: result.editorsPosts });
       setLoading(false);

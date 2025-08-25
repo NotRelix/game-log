@@ -52,7 +52,7 @@ const Reply = ({ reply, setReplies, comment }: ReplyProps) => {
     };
     console.log({ data });
     const response = await fetch(
-      `http://localhost:3000/posts/${postId}/comments/${comment.id}/replies`,
+      `${import.meta.env.VITE_API_URL}posts/${postId}/comments/${comment.id}/replies`,
       {
         method: "POST",
         headers: {
