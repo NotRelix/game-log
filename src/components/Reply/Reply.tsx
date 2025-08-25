@@ -7,6 +7,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { PopupContext } from "../../context/PopupContext";
 import { SendHorizonal } from "lucide-react";
 import { useParams } from "react-router";
+import { formatDistanceDate } from "../../utils/dateFormatter";
 
 interface ReplyProps {
   reply: ReplyType;
@@ -49,7 +50,7 @@ const Reply = ({ reply, setReplies, comment }: ReplyProps) => {
     const data = {
       comment: `${mention} ${replyInput}`,
     };
-    console.log({data})
+    console.log({ data });
     const response = await fetch(
       `http://localhost:3000/posts/${postId}/comments/${comment.id}/replies`,
       {
@@ -72,7 +73,7 @@ const Reply = ({ reply, setReplies, comment }: ReplyProps) => {
     <div className={styles.replyContainer}>
       <ProfilePicture username={reply.author.username} />
       <div className={styles.replyRightContainer}>
-        <span>@{reply.author.username}</span>
+        <span>@{reply.author.username} <span className={commentStyles.estimatedTime}>&#183; {formatDistanceDate(reply.createdAt)}</span></span>
         <span>{reply.comment}</span>
         <div className={commentStyles.commentButtons}>
           {replyInputOpen ? (
@@ -87,7 +88,10 @@ const Reply = ({ reply, setReplies, comment }: ReplyProps) => {
         </div>
         {replyInputOpen && (
           <div>
-            <form className={commentStyles.commentForm} onSubmit={handleReplyReply}>
+            <form
+              className={commentStyles.commentForm}
+              onSubmit={handleReplyReply}
+            >
               <ProfilePicture username={user?.username} />
               <input
                 type="text"

@@ -8,6 +8,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { SendHorizonal } from "lucide-react";
 import { useParams } from "react-router";
 import Reply from "../Reply/Reply";
+import { formatDistanceDate } from "../../utils/dateFormatter";
 
 interface CommentProps {
   comment: CommentType;
@@ -88,7 +89,12 @@ const Comment = ({ comment }: CommentProps) => {
     >
       <ProfilePicture username={comment.author.username} />
       <div className={styles.commentRightContainer}>
-        <span>@{comment.author.username}</span>
+        <span>
+          @{comment.author.username}{" "}
+          <span className={styles.estimatedTime}>
+            &#183; {formatDistanceDate(comment.createdAt)}
+          </span>
+        </span>
         <span>{comment.comment}</span>
         <div className={styles.commentButtons}>
           {replyInputOpen ? (
@@ -127,7 +133,12 @@ const Comment = ({ comment }: CommentProps) => {
         {replies && replies.length > 0 && (
           <div className={styles.repliesContainer}>
             {replies?.map((reply) => (
-              <Reply reply={reply} setReplies={setReplies} comment={comment} />
+              <Reply
+                key={reply.id}
+                reply={reply}
+                setReplies={setReplies}
+                comment={comment}
+              />
             ))}
           </div>
         )}
