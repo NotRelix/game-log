@@ -61,6 +61,7 @@
 
 .dateText {
   color: var(--muted-text);
+  text-align: left;
 }
 
 .dark .dateText {

@@ -9,6 +9,7 @@
   background-color: var(--profile-bg);
   color: var(--primary-text-dark);
   padding: 6px;
+  flex-shrink: 0;
 }
 
 .profileContainer span {

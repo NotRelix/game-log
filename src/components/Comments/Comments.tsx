@@ -12,6 +12,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { DarkModeContext } from "../../context/DarkModeContext";
 import { SendHorizonal } from "lucide-react";
 import { PopupContext } from "../../context/PopupContext";
+import Comment from "../Comment/Comment";
 
 type CommentsProps = {
   postId: number;
@@ -119,9 +120,7 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
       </form>
       <div className={styles.commentsContainer}>
         {comments.comments.map((comment) => (
-          <span key={comment.id}>
-            {comment.comment} {new Date(comment.createdAt).toLocaleString()}
-          </span>
+          <Comment comment={comment} />
         ))}
       </div>
     </div>

@@ -1,0 +1,14 @@
+.commentContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.commentRightContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.commentRightContainer span {
+  text-align: left;
+}

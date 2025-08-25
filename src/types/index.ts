@@ -48,6 +48,9 @@ export interface CommentType {
   postId: number;
   authorId: number;
   replies: ReplyType[];
+  author: {
+    username: string;
+  };
 }
 
 export interface ReplyType {

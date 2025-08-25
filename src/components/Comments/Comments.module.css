@@ -12,7 +12,8 @@
 .commentsContainer {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 36px;
+  margin-top: 16px;
 }
 
 .commentForm {
