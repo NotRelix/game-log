@@ -36,6 +36,10 @@
   color: var(--primar-text-dark);
 }
 
+.commentForm input:read-only:focus {
+  outline: none;
+}
+
 .submitComment {
   display: flex;
   align-items: center;

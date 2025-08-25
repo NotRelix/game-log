@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { PopupContext } from "../../context/PopupContext";
 import styles from "./LoginPopup.module.css";
 import { Link } from "react-router";
-import { X } from "lucide-react";
 import { DarkModeContext } from "../../context/DarkModeContext";
 
 const LoginPopup = () => {
@@ -30,10 +29,13 @@ const LoginPopup = () => {
             darkMode ? styles.dark : ""
           }`}
         >
-          <X onClick={handleClose} />
-          <h1>Want to comment something?</h1>
-          <p>Login to continue</p>
-          <Link to={"/login"}>Login</Link>
+          <h1 className={styles.loginPopupHeading}>
+            Want to comment something?
+          </h1>
+          <p className={styles.loginPopupText}>Login to continue</p>
+          <Link className={styles.loginBtn} to={"/login"} onClick={handleClose}>
+            Login
+          </Link>
         </div>
       </>
     );

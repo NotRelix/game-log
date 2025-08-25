@@ -11,12 +11,49 @@
 .loginPopupContainer {
   z-index: 999;
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--primary-bg);
+  max-width: 400px;
+  width: 100%;
+  padding: 36px 24px;
+  border-radius: 16px;
 }
 
 .dark.loginPopupContainer {
   background-color: var(--primary-bg-dark);
+}
+
+.loginPopupHeading {
+  font-size: 24px;
+}
+
+.loginPopupText {
+  color: var(--secondary-text);
+}
+
+.dark .loginPopupText {
+  color: var(--secondary-text-dark);
+}
+
+.loginBtn {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--primary-text);
+  background-color: var(--primary-bg);
+  padding: 8px;
+  border-radius: 16px;
+  border: 1px solid var(--bold-border);
+  margin-top: 4px;
+}
+
+.dark .loginBtn {
+  border: none;
 }
