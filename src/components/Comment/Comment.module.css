@@ -12,3 +12,17 @@
 .commentRightContainer span {
   text-align: left;
 }
+
+.reply {
+  border: 1px solid var(--muted-border);
+  padding: 8px 16px;
+  border-radius: 16px;
+  background-color: var(--primary-bg);
+  cursor: pointer;
+}
+
+.dark .reply {
+  background-color: var(--primary-bg-dark);
+  border: 2px solid var(--primary-border-dark);
+  color: var(--muted-text-dark);
+}
