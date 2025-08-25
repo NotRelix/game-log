@@ -87,7 +87,7 @@ const Comment = ({ comment }: CommentProps) => {
       <div className={styles.commentRightContainer}>
         <span>@{comment.author.username}</span>
         <span>{comment.comment}</span>
-        <div>
+        <div className={styles.commentButtons}>
           {replyInputOpen ? (
             <button className={styles.reply} onClick={handleCloseInput}>
               Close
@@ -121,11 +121,19 @@ const Comment = ({ comment }: CommentProps) => {
             </form>
           </div>
         )}
-        <div>
-          {replies?.map((reply) => (
-            <div>{reply.comment}</div>
-          ))}
-        </div>
+        {replies && replies.length > 0 && (
+          <div className={styles.repliesContainer}>
+            {replies?.map((reply) => (
+              <div className={styles.replyContainer}>
+                <ProfilePicture username={reply.author.username} />
+                <div className={styles.commentRightContainer}>
+                  <span>@{reply.author.username}</span>
+                  <span>{reply.comment}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

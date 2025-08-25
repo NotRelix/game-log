@@ -61,4 +61,7 @@ export interface ReplyType {
   postId: number;
   authorId: number;
   parentId: number;
+  author: {
+    username: string;
+  };
 }

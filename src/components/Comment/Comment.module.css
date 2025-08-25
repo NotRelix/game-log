@@ -10,6 +10,10 @@
   width: 100%;
 }
 
+.commentButtons {
+  margin-bottom: 8px;
+}
+
 .commentRightContainer span {
   text-align: left;
 }
@@ -32,6 +36,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-bottom: 8px;
 }
 
 .commentForm input {
@@ -67,4 +72,15 @@
 
 .dark .submitIcon {
   stroke: var(--bold-border-dark);
+}
+
+.repliesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.replyContainer {
+  display: flex;
+  gap: 8px;
 }
