@@ -21,7 +21,7 @@
   transform: translate(-50%, -50%);
   background-color: var(--primary-bg);
   max-width: 400px;
-  width: 100%;
+  width: calc(100% - 32px);
   padding: 36px 24px;
   border-radius: 16px;
 }
@@ -56,4 +56,10 @@
 
 .dark .loginBtn {
   border: none;
+}
+
+@media (max-width: 460px) {
+  .loginPopupHeading {
+    font-size: 20px;
+  }
 }
