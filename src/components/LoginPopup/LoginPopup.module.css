@@ -1,37 +1,58 @@
 .loginBackdrop {
+  pointer-events: none;
   z-index: 998;
   position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: opacity 200ms ease;
+  opacity: 0;
+}
+
+.dark.loginBackdrop {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.loginBackdrop.show {
+  pointer-events: auto;
+  opacity: 1;
 }
 
 .loginPopupContainer {
+  pointer-events: none;
   z-index: 999;
   position: fixed;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 16px;
   text-align: center;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.9);
   background-color: var(--primary-bg);
-  max-width: 400px;
+  max-width: 350px;
   width: calc(100% - 32px);
   padding: 36px 24px;
   border-radius: 16px;
+  transition: opacity 200ms ease, transform 200ms ease;
+  opacity: 0;
+  display: flex;
+}
+
+.loginPopupContainer.show {
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+  opacity: 1;
 }
 
 .dark.loginPopupContainer {
-  background-color: var(--primary-bg-dark);
+  background-color: var(--secondary-bg-dark);
 }
 
 .loginPopupHeading {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .loginPopupText {
@@ -52,6 +73,7 @@
   border-radius: 16px;
   border: 1px solid var(--bold-border);
   margin-top: 4px;
+  font-size: 14px;
 }
 
 .dark .loginBtn {
@@ -59,7 +81,15 @@
 }
 
 @media (max-width: 460px) {
+  .loginPopupContainer {
+    padding: 36px 24px;
+  }
+
   .loginPopupHeading {
-    font-size: 20px;
+    font-size: 16px;
+  }
+
+  .loginPopupText {
+    font-size: 14px;
   }
 }

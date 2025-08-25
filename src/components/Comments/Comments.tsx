@@ -29,7 +29,7 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
     throw new Error("Comments must be used inside a PopupProvider");
   }
   const { darkMode } = darkModeContext;
-  const { setLoginPopupOpen } = popupContext;
+  const { setLoginPopupOpen, setIsLoginPopupVisible } = popupContext;
   useEffect(() => {
     const fetchComments = async () => {
       const response = await fetch(
@@ -77,6 +77,9 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
   const handleCommentClick = () => {
     if (isAuthenticated) return;
     setLoginPopupOpen(true);
+    requestAnimationFrame(() => {
+      setIsLoginPopupVisible(true);
+    });
   };
 
   if (!comments) {

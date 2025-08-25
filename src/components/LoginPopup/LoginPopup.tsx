@@ -14,20 +14,33 @@ const LoginPopup = () => {
     throw new Error("LoginPopup must be used inside a PopupProvider");
   }
   const { darkMode } = darkModeContext;
-  const { loginPopupOpen, setLoginPopupOpen } = popupContext;
+  const {
+    loginPopupOpen,
+    isLoginPopupVisible,
+    setLoginPopupOpen,
+    setIsLoginPopupVisible,
+  } = popupContext;
 
   const handleClose = () => {
-    setLoginPopupOpen(false);
+    setIsLoginPopupVisible(false);
+    setTimeout(() => {
+      setLoginPopupOpen(false);
+    }, 200);
   };
 
   if (loginPopupOpen) {
     return (
       <>
-        <div className={styles.loginBackdrop} onClick={handleClose}></div>
+        <div
+          className={`${styles.loginBackdrop} ${darkMode ? styles.dark : ""} ${
+            isLoginPopupVisible ? styles.show : ""
+          }`}
+          onClick={handleClose}
+        ></div>
         <div
           className={`${styles.loginPopupContainer} ${
             darkMode ? styles.dark : ""
-          }`}
+          } ${isLoginPopupVisible ? styles.show : ""}`}
         >
           <h1 className={styles.loginPopupHeading}>
             Want to comment something?
