@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
 }
 
 .commentRightContainer span {
@@ -25,4 +26,45 @@
   background-color: var(--primary-bg-dark);
   border: 2px solid var(--primary-border-dark);
   color: var(--muted-text-dark);
+}
+
+.commentForm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.commentForm input {
+  flex: 1;
+  background-color: var(--primary-bg);
+  border: 1px solid var(--muted-border);
+  border-radius: 16px;
+  padding: 8px 12px;
+  color: var(--primary-text);
+}
+
+.dark .commentForm input {
+  background-color: var(--primary-dark-bg);
+  border: 2px solid var(--primary-border-dark);
+  color: var(--primar-text-dark);
+}
+
+.commentForm input:read-only:focus {
+  outline: none;
+}
+
+.submitComment {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.submitIcon {
+  stroke: var(--bold-border);
+}
+
+.dark .submitIcon {
+  stroke: var(--bold-border-dark);
 }
