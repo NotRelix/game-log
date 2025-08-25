@@ -1,5 +1,5 @@
-import { useContext, useState, type FormEvent } from "react";
-import type { CommentType } from "../../types";
+import { useContext, useEffect, useState, type FormEvent } from "react";
+import { type CommentType, type ReplyType } from "../../types";
 import ProfilePicture from "../ProfilePicture/ProfilePicture";
 import styles from "./Comment.module.css";
 import { DarkModeContext } from "../../context/DarkModeContext";
@@ -25,7 +25,20 @@ const Comment = ({ comment }: CommentProps) => {
   const { setLoginPopupOpen, setIsLoginPopupVisible } = popupContext;
   const [replyInputOpen, setReplyInputOpen] = useState<boolean>(false);
   const [replyInput, setReplyInput] = useState<string>("");
+  const [replies, setReplies] = useState<ReplyType[] | null>(null);
   const { postId } = useParams();
+
+  useEffect(() => {
+    const fetchReplies = async () => {
+      const response = await fetch(
+        `http://localhost:3000/posts/${postId}/comments/${comment.id}/replies`
+      );
+      const result = await response.json();
+      setReplies(result.replies);
+    };
+
+    fetchReplies();
+  }, [postId]);
 
   const handleReplyComment = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,6 +59,8 @@ const Comment = ({ comment }: CommentProps) => {
     );
     const result = await response.json();
     setReplyInput("");
+    setReplies((prev) => (prev ? [...prev, result.reply] : [result.reply]));
+
     console.log(result);
   };
 
@@ -106,6 +121,11 @@ const Comment = ({ comment }: CommentProps) => {
             </form>
           </div>
         )}
+        <div>
+          {replies?.map((reply) => (
+            <div>{reply.comment}</div>
+          ))}
+        </div>
       </div>
     </div>
   );
