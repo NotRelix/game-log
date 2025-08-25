@@ -87,7 +87,7 @@ const Reply = ({ reply, setReplies, comment }: ReplyProps) => {
         </div>
         {replyInputOpen && (
           <div>
-            <form className={styles.commentForm} onSubmit={handleReplyReply}>
+            <form className={commentStyles.commentForm} onSubmit={handleReplyReply}>
               <ProfilePicture username={user?.username} />
               <input
                 type="text"
@@ -99,11 +99,11 @@ const Reply = ({ reply, setReplies, comment }: ReplyProps) => {
                 required
               />
               <button
-                className={styles.submitComment}
+                className={commentStyles.submitComment}
                 type="submit"
                 onClick={handleReplyClick}
               >
-                <SendHorizonal className={styles.submitIcon} />
+                <SendHorizonal className={commentStyles.submitIcon} />
               </button>
             </form>
           </div>
