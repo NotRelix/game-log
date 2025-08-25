@@ -77,10 +77,5 @@
 .repliesContainer {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-}
-
-.replyContainer {
-  display: flex;
-  gap: 8px;
+  gap: 16px;
 }

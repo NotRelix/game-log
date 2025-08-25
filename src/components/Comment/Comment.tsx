@@ -7,6 +7,7 @@ import { PopupContext } from "../../context/PopupContext";
 import { useAuth } from "../../hooks/useAuth";
 import { SendHorizonal } from "lucide-react";
 import { useParams } from "react-router";
+import Reply from "../Reply/Reply";
 
 interface CommentProps {
   comment: CommentType;
@@ -59,6 +60,7 @@ const Comment = ({ comment }: CommentProps) => {
     );
     const result = await response.json();
     setReplyInput("");
+    setReplyInputOpen(false);
     setReplies((prev) => (prev ? [...prev, result.reply] : [result.reply]));
 
     console.log(result);
@@ -76,6 +78,7 @@ const Comment = ({ comment }: CommentProps) => {
   };
 
   const handleCloseInput = () => {
+    setReplyInput("");
     setReplyInputOpen(false);
   };
 
@@ -124,13 +127,7 @@ const Comment = ({ comment }: CommentProps) => {
         {replies && replies.length > 0 && (
           <div className={styles.repliesContainer}>
             {replies?.map((reply) => (
-              <div className={styles.replyContainer}>
-                <ProfilePicture username={reply.author.username} />
-                <div className={styles.commentRightContainer}>
-                  <span>@{reply.author.username}</span>
-                  <span>{reply.comment}</span>
-                </div>
-              </div>
+              <Reply reply={reply} setReplies={setReplies} comment={comment} />
             ))}
           </div>
         )}

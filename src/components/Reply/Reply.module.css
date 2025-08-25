@@ -1,0 +1,19 @@
+.replyContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.replyRightContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.replyButtons {
+  margin-bottom: 8px;
+}
+
+.replyRightContainer span {
+  text-align: left;
+}
