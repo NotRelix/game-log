@@ -71,7 +71,7 @@ const Reply = ({ reply, setReplies, comment }: ReplyProps) => {
 
   return (
     <div className={styles.replyContainer}>
-      <ProfilePicture username={reply.author.username} />
+      <ProfilePicture username={reply.author.username} userId={reply.authorId} />
       <div className={styles.replyRightContainer}>
         <span>@{reply.author.username} <span className={commentStyles.estimatedTime}>&#183; {formatDistanceDate(reply.createdAt)}</span></span>
         <span>{reply.comment}</span>
@@ -92,7 +92,7 @@ const Reply = ({ reply, setReplies, comment }: ReplyProps) => {
               className={commentStyles.commentForm}
               onSubmit={handleReplyReply}
             >
-              <ProfilePicture username={user?.username} />
+              <ProfilePicture username={user?.username} userId={user?.id} />
               <input
                 type="text"
                 id="comment"

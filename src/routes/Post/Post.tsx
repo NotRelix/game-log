@@ -49,7 +49,7 @@ const Post = () => {
         <div className={styles.contentContainer}>
           <h1 id={styles.postTitle}>{post.title}</h1>
           <div className={styles.profileContainer}>
-            <ProfilePicture username={post.author} />
+            <ProfilePicture username={post.author} userId={post.authorId} />
             <span>{post.author}</span>
             <span className={styles.dateText}>&#183;</span>
             <span className={styles.dateText}>

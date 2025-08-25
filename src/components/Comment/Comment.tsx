@@ -87,7 +87,10 @@ const Comment = ({ comment }: CommentProps) => {
     <div
       className={`${styles.commentContainer} ${darkMode ? styles.dark : ""}`}
     >
-      <ProfilePicture username={comment.author.username} />
+      <ProfilePicture
+        username={comment.author.username}
+        userId={comment.authorId}
+      />
       <div className={styles.commentRightContainer}>
         <span>
           @{comment.author.username}{" "}
@@ -110,7 +113,7 @@ const Comment = ({ comment }: CommentProps) => {
         {replyInputOpen && (
           <div>
             <form className={styles.commentForm} onSubmit={handleReplyComment}>
-              <ProfilePicture username={user?.username} />
+              <ProfilePicture username={user?.username} userId={user?.id} />
               <input
                 type="text"
                 id="comment"

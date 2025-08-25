@@ -46,7 +46,7 @@ const MainPost = ({ post, loading }: MainPostProps) => {
       <div className={styles.mainTextContainer}>
         <h1>{post.title}</h1>
         <div className={styles.profileContainer}>
-          <ProfilePicture username={post.author} />
+          <ProfilePicture username={post.author} userId={post.authorId} />
           <span>{post.author}</span>
         </div>
       </div>

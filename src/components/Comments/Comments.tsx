@@ -96,7 +96,7 @@ const Comments = ({ postId }: CommentsProps): JSX.Element => {
         {comments.totalCount === 1 ? "Comment" : "Comments"}
       </h1>
       <form className={styles.commentForm} onSubmit={handlePostComment}>
-        <ProfilePicture username={user?.username} />
+        <ProfilePicture username={user?.username} userId={user?.id} />
         <input
           type="text"
           id="comment"
